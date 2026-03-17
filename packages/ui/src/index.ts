@@ -45,6 +45,15 @@ export type {
   CommandPaletteItem,
   CommandPaletteProps
 } from "./components/command-palette";
+export { DataTable } from "./components/data-table";
+export type {
+  DataTableCellContext,
+  DataTableColumn,
+  DataTableHeaderContext,
+  DataTableProps,
+  DataTableSortDirection,
+  DataTableSortState
+} from "./components/data-table";
 export { DatePicker } from "./components/date-picker";
 export type { DatePickerProps } from "./components/date-picker";
 export { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuTrigger } from "./components/context-menu";

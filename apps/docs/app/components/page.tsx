@@ -31,6 +31,7 @@ import {
   Checkbox,
   Combobox,
   CommandPalette,
+  DataTable,
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
@@ -123,6 +124,7 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from "@marginalia/ui";
+import type { DataTableColumn } from "@marginalia/ui";
 
 import { SectionIntro, ShowcasePanel } from "../../components/docs-section";
 
@@ -171,6 +173,127 @@ const reviewRows = [
     owner: "S. Chen",
     status: "In revision",
     updated: "Mar 13"
+  }
+];
+
+type OrderRow = {
+  id: string;
+  customer: string;
+  channel: string;
+  status: "Paid" | "Processing" | "At risk";
+  items: number;
+  total: number;
+  placedAt: Date;
+};
+
+const currencyFormatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD"
+});
+
+const orderDateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  hour: "numeric",
+  minute: "2-digit"
+});
+
+const orderRows: OrderRow[] = [
+  {
+    id: "ORD-2048",
+    customer: "Mina Albright",
+    channel: "Subscription",
+    status: "Paid",
+    items: 3,
+    total: 248,
+    placedAt: new Date(2026, 2, 18, 10, 24)
+  },
+  {
+    id: "ORD-2041",
+    customer: "Jonah Rivera",
+    channel: "Direct",
+    status: "Processing",
+    items: 5,
+    total: 132,
+    placedAt: new Date(2026, 2, 18, 8, 5)
+  },
+  {
+    id: "ORD-2037",
+    customer: "Sofia Chen",
+    channel: "Wholesale",
+    status: "At risk",
+    items: 2,
+    total: 410,
+    placedAt: new Date(2026, 2, 17, 17, 42)
+  },
+  {
+    id: "ORD-2032",
+    customer: "Amara Holt",
+    channel: "Direct",
+    status: "Paid",
+    items: 1,
+    total: 76,
+    placedAt: new Date(2026, 2, 17, 13, 16)
+  }
+];
+
+const orderColumns: DataTableColumn<OrderRow>[] = [
+  {
+    id: "order",
+    header: "Order",
+    accessorFn: (row) => row.id,
+    sortable: true,
+    sortAccessor: (row) => row.id,
+    cell: ({ row }) => (
+      <div className="grid gap-1">
+        <span className="font-medium text-text">{row.id}</span>
+        <span className="text-[length:var(--marginalia-size-text-xs)] text-textMuted">
+          {row.customer} · {row.channel}
+        </span>
+      </div>
+    )
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    sortable: true,
+    cell: ({ value }) => (
+      <Badge
+        variant={
+          value === "Paid"
+            ? "success"
+            : value === "Processing"
+              ? "accent"
+              : "warning"
+        }
+      >
+        {String(value)}
+      </Badge>
+    )
+  },
+  {
+    accessorKey: "items",
+    header: "Items",
+    sortable: true,
+    align: "center"
+  },
+  {
+    accessorKey: "total",
+    header: "Total",
+    sortable: true,
+    align: "right",
+    cell: ({ value }) => <span className="font-medium">{currencyFormatter.format(Number(value ?? 0))}</span>
+  },
+  {
+    accessorKey: "placedAt",
+    header: "Placed",
+    sortable: true,
+    cell: ({ value }) =>
+      value instanceof Date ? (
+        <span className="text-textMuted">{orderDateFormatter.format(value)}</span>
+      ) : (
+        "—"
+      )
   }
 ];
 
@@ -831,6 +954,23 @@ export default function ComponentsPage() {
 
           <ShowcasePanel className="span-12">
             <div className="section-stack">
+              <div className="eyebrow">Data table</div>
+              <DataTable<OrderRow>
+                title="Recent orders"
+                description="A typed `DataTable<OrderRow>` surface with sortable columns, richer cells, and a calmer detail rhythm than a plain table."
+                toolbar={<Badge variant="accent">Typed and sortable</Badge>}
+                caption="Client-side sorting with strongly typed columns and custom cells."
+                columns={orderColumns}
+                data={orderRows}
+                getRowId={(row) => row.id}
+                initialSort={{ id: "placedAt", direction: "desc" }}
+                rowClassName={(row) => (row.status === "At risk" ? "bg-warning/5" : undefined)}
+              />
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-12">
+            <div className="section-stack">
               <div className="eyebrow">Table</div>
               <Table>
                 <TableCaption>Active editorial reviews this week.</TableCaption>
@@ -962,4 +1102,3 @@ function ArchiveIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-

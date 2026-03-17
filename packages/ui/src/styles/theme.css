@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ulib-color-canvas: 247 242 233;
+    --ulib-color-surface: 255 250 243;
+    --ulib-color-surface-alt: 239 231 218;
+    --ulib-color-border: 211 197 177;
+    --ulib-color-text: 59 47 38;
+    --ulib-color-text-muted: 123 108 92;
+    --ulib-color-accent: 157 112 78;
+    --ulib-color-accent-soft: 229 216 196;
+    --ulib-color-focus: 181 129 90;
+    --ulib-color-success: 104 132 96;
+    --ulib-color-warning: 179 129 58;
+    --ulib-color-danger: 167 87 77;
+    --ulib-font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    --ulib-font-sans: "Segoe UI", "Inter", system-ui, sans-serif;
+  }
+
+  *,
+  *::before,
+  *::after {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: rgb(var(--ulib-color-canvas));
+    color: rgb(var(--ulib-color-text));
+    font-family: var(--ulib-font-sans);
+  }
+
+  body {
+    @apply bg-canvas text-text;
+    margin: 0;
+    min-height: 100vh;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgb(var(--ulib-color-accent-soft));
+    color: rgb(var(--ulib-color-text));
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+

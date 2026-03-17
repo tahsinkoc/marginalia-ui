@@ -1,0 +1,23 @@
+{
+  "name": "ulib-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace @ulib/ui && npm run build --workspace @ulib/docs",
+    "dev": "npm run build --workspace @ulib/ui && concurrently -n ui,docs -c auto \"npm run dev --workspace @ulib/ui\" \"npm run dev --workspace @ulib/docs\"",
+    "test": "npm run test --workspace @ulib/ui"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+

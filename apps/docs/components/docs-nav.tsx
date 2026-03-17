@@ -1,6 +1,6 @@
 "use client";
-
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import * as React from "react";
 import {
@@ -46,9 +46,10 @@ export function DocsNav() {
           <div className="brand-panel">
             <div className="brand-row">
               <Link href="/" className="brand-mark">
-                {brandName}
+                {/* {brandName} */}
+                <Image src={'/marginalia_logo_r.png'} alt="logo" width={100} height={100}/>
               </Link>
-              <Badge variant="accent">React UI Kit</Badge>
+              {/* <Badge variant="accent">React UI Kit</Badge> */}
             </div>
             <div className="brand-note">Warm editorial system for calm React and Next.js interfaces.</div>
           </div>

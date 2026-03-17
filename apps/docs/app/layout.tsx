@@ -27,7 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={`${editorial.variable} ${sans.variable}`}>
         <DocsNav />
-        <div className="docs-shell">
+        <div className="docs-shell" style={{marginTop: 16}}>
           <main className="page-stack">{children}</main>
           <footer className="footer-note">
             Marginalia is built for calm interfaces, editorial rhythm, and thoughtful defaults in React + Next.js.

@@ -62,7 +62,7 @@ export function DocsNav() {
             <SheetTrigger asChild>
               <Button variant="outline" size="sm" className="nav-mobile-trigger" aria-label="Open navigation menu">
                 <MenuIcon className="h-4 w-4" />
-                <span>Menu</span>
+                {/* <span>Menu</span> */}
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="nav-mobile-sheet">

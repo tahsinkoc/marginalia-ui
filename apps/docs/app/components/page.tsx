@@ -88,6 +88,7 @@ import {
   RichTextSurface,
   Select,
   Sheet,
+  SheetBody,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -717,20 +718,32 @@ export default function ComponentsPage() {
                 </SheetTrigger>
                 <SheetContent side="right">
                   <SheetHeader>
-                    <Badge variant="accent">Workflow</Badge>
-                    <SheetTitle>Editorial side panel</SheetTitle>
+                    <div className="inline-actions" style={{ gap: "0.55rem", marginTop: 0 }}>
+                      <Badge variant="accent">Workflow</Badge>
+                      <span className="mono-note">Review queue</span>
+                    </div>
+                    <SheetTitle>Editorial handoff</SheetTitle>
                     <SheetDescription>
-                      Sheets reuse the same warm surfaces as dialogs, but slide from an edge for denser utility flows.
+                      Sheets now feel lighter and more structured, with a dedicated body area for denser utility flows.
                     </SheetDescription>
                   </SheetHeader>
-                  <Card>
-                    <CardContent>
-                      <Input readOnly value="Annotations ready for final pass." />
-                    </CardContent>
-                  </Card>
+                  <SheetBody>
+                    <div className="grid gap-2 rounded-[var(--marginalia-radius-field)] border bg-surfaceAlt/45 p-4">
+                      <Label htmlFor="sheet-handoff">Current handoff</Label>
+                      <Input id="sheet-handoff" readOnly value="Annotations ready for final pass." />
+                    </div>
+                    <div className="grid gap-2 rounded-[var(--marginalia-radius-field)] border border-dashed bg-canvas/55 p-4">
+                      <span className="mono-note">Next steps</span>
+                      <p className="lead" style={{ fontSize: "0.98rem", margin: 0 }}>
+                        Confirm citations, scan inline notes, and send the draft to production once copy is locked.
+                      </p>
+                    </div>
+                  </SheetBody>
                   <SheetFooter>
-                    <Button variant="secondary">Dismiss</Button>
-                    <Button>Continue</Button>
+                    <Button size="sm" variant="secondary">
+                      Dismiss
+                    </Button>
+                    <Button size="sm">Continue</Button>
                   </SheetFooter>
                 </SheetContent>
               </Sheet>

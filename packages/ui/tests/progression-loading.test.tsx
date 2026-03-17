@@ -9,9 +9,11 @@ import {
   AccordionTrigger,
   Button,
   Sheet,
+  SheetBody,
   SheetContent,
   SheetDescription,
   SheetHeader,
+  SheetFooter,
   SheetTitle,
   SheetTrigger,
   Skeleton,
@@ -50,6 +52,12 @@ describe("Accordion, Sheet, Stepper, and Skeleton", () => {
             <SheetTitle>Side workflow</SheetTitle>
             <SheetDescription>Focused utility panel.</SheetDescription>
           </SheetHeader>
+          <SheetBody>
+            <p>Annotations ready for final pass.</p>
+          </SheetBody>
+          <SheetFooter>
+            <Button size="sm">Continue</Button>
+          </SheetFooter>
         </SheetContent>
       </Sheet>
     );
@@ -57,6 +65,8 @@ describe("Accordion, Sheet, Stepper, and Skeleton", () => {
     await user.click(screen.getByRole("button", { name: /open sheet/i }));
 
     expect(screen.getByText(/side workflow/i)).toBeInTheDocument();
+    expect(screen.getByText(/annotations ready for final pass/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /continue/i })).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: /close sheet/i }));
 

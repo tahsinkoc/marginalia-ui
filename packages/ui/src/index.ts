@@ -115,6 +115,7 @@ export { Select } from "./components/select";
 export type { SelectOption, SelectProps } from "./components/select";
 export {
   Sheet,
+  SheetBody,
   SheetClose,
   SheetContent,
   SheetDescription,

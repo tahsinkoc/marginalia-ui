@@ -439,113 +439,111 @@ export function ThemeBuilder() {
           </CardContent>
         </Card>
 
-        <div className="section-stack">
-          <Card>
-            <CardHeader>
-              <CardTitle>Live preview</CardTitle>
-              <CardDescription>
-                The preview below applies your token overrides directly to ULib components, so you can feel spacing and type changes before exporting.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="theme-preview-shell" style={previewStyle}>
-                <div className="theme-preview-canvas">
-                  <div className="theme-preview-grid">
-                    <Card className="theme-preview-surface">
-                      <CardHeader>
-                        <Badge variant="accent">Preview</Badge>
-                        <CardTitle>Warm editorial system</CardTitle>
-                        <CardDescription>
-                          Cards, buttons, fields, and longer reading surfaces update from the same token sheet.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="section-stack" style={{ gap: "0.7rem" }}>
-                          <Label htmlFor="theme-builder-email">Project name</Label>
-                          <Input id="theme-builder-email" value="ULib Theme Builder" readOnly />
-                        </div>
-                        <div className="section-stack" style={{ gap: "0.7rem" }}>
-                          <Label htmlFor="theme-builder-notes">Editorial notes</Label>
-                          <Textarea
-                            id="theme-builder-notes"
-                            value="Compact mode lowers font, padding, and control sizes without sacrificing the warm tone."
-                            readOnly
-                          />
-                        </div>
-                      </CardContent>
-                      <div className="inline-actions" style={{ marginTop: 0 }}>
-                        <Button size="sm">Primary</Button>
-                        <Button variant="secondary" size="sm">
-                          Secondary
-                        </Button>
-                        <Button variant="outline" size="sm">
-                          Outline
-                        </Button>
+        <Card>
+          <CardHeader>
+            <CardTitle>Export CSS tokens</CardTitle>
+            <CardDescription>
+              Copy the generated `:root` block, then paste it either into your consumer app&apos;s `app/globals.css` or into ULib&apos;s own `packages/ui/src/styles/theme.css`.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="theme-export-actions">
+              <Button onClick={handleCopy}>Copy snippet</Button>
+              <span className="theme-export-note">
+                {copyState === "copied"
+                  ? "Copied to clipboard."
+                  : copyState === "failed"
+                    ? "Clipboard copy failed. You can still copy from the code block."
+                    : "Consumer apps should keep importing @ulib/ui/styles.css once in the app shell."}
+              </span>
+            </div>
+            <pre className="code-block">{exportSnippet}</pre>
+            <div className="catalog-list">
+              <div className="token-card">
+                <div className="token-name">Paste inside this repo</div>
+                <div className="theme-field-note">Replace the `:root` block in `packages/ui/src/styles/theme.css`.</div>
+              </div>
+              <div className="token-card">
+                <div className="token-name">Paste in a Next app</div>
+                <div className="theme-field-note">
+                  Keep `import "@ulib/ui/styles.css"` in `app/layout.tsx`, then paste the snippet into `app/globals.css`.
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="theme-builder-full">
+          <CardHeader>
+            <CardTitle>Live preview</CardTitle>
+            <CardDescription>
+              The preview below applies your token overrides directly to ULib components, so you can feel spacing and type changes before exporting.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="theme-preview-shell" style={previewStyle}>
+              <div className="theme-preview-canvas">
+                <div className="theme-preview-grid">
+                  <Card className="theme-preview-surface">
+                    <CardHeader>
+                      <Badge variant="accent">Preview</Badge>
+                      <CardTitle>Warm editorial system</CardTitle>
+                      <CardDescription>
+                        Cards, buttons, fields, and longer reading surfaces update from the same token sheet.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="section-stack" style={{ gap: "0.7rem" }}>
+                        <Label htmlFor="theme-builder-email">Project name</Label>
+                        <Input id="theme-builder-email" value="ULib Theme Builder" readOnly />
                       </div>
-                    </Card>
+                      <div className="section-stack" style={{ gap: "0.7rem" }}>
+                        <Label htmlFor="theme-builder-notes">Editorial notes</Label>
+                        <Textarea
+                          id="theme-builder-notes"
+                          value="Compact mode lowers font, padding, and control sizes without sacrificing the warm tone."
+                          readOnly
+                        />
+                      </div>
+                    </CardContent>
+                    <div className="inline-actions" style={{ marginTop: 0 }}>
+                      <Button size="sm">Primary</Button>
+                      <Button variant="secondary" size="sm">
+                        Secondary
+                      </Button>
+                      <Button variant="outline" size="sm">
+                        Outline
+                      </Button>
+                    </div>
+                  </Card>
 
-                    <RichTextSurface className="theme-preview-surface">
-                      <RichTextKicker>Editorial sample</RichTextKicker>
-                      <h1>Theme tokens should travel cleanly from preview to production.</h1>
-                      <RichTextLead>
-                        A single snippet can now tune warm color, control density, padding rhythm, and reading width without adding a runtime theme provider.
-                      </RichTextLead>
-                      <RichTextQuote>
-                        The best theme builder feels simple enough to trust, then exports values clear enough to paste without guessing.
-                      </RichTextQuote>
-                      <h2>What changes now</h2>
-                      <p>
-                        This builder exports not only colors, but also the core sizing tokens that drive card padding, field height, button size, and rich text measure.
-                      </p>
-                      <RichTextMeta>
-                        <span>Live tokens</span>
-                        <span>Warm presets</span>
-                        <span>No runtime provider</span>
-                      </RichTextMeta>
-                    </RichTextSurface>
-                  </div>
+                  <RichTextSurface className="theme-preview-surface">
+                    <RichTextKicker>Editorial sample</RichTextKicker>
+                    <h1>Theme tokens should travel cleanly from preview to production.</h1>
+                    <RichTextLead>
+                      A single snippet can now tune warm color, control density, padding rhythm, and reading width without adding a runtime theme provider.
+                    </RichTextLead>
+                    <RichTextQuote>
+                      The best theme builder feels simple enough to trust, then exports values clear enough to paste without guessing.
+                    </RichTextQuote>
+                    <h2>What changes now</h2>
+                    <p>
+                      This builder exports not only colors, but also the core sizing tokens that drive card padding, field height, button size, and rich text measure.
+                    </p>
+                    <RichTextMeta>
+                      <span>Live tokens</span>
+                      <span>Warm presets</span>
+                      <span>No runtime provider</span>
+                    </RichTextMeta>
+                  </RichTextSurface>
                 </div>
               </div>
-              <p className="theme-preview-note">
-                Tip: `Compact` is the fastest way to get the smaller text and tighter content density you asked for.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Export CSS tokens</CardTitle>
-              <CardDescription>
-                Copy the generated `:root` block, then paste it either into your consumer app&apos;s `app/globals.css` or into ULib&apos;s own `packages/ui/src/styles/theme.css`.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="theme-export-actions">
-                <Button onClick={handleCopy}>Copy snippet</Button>
-                <span className="theme-export-note">
-                  {copyState === "copied"
-                    ? "Copied to clipboard."
-                    : copyState === "failed"
-                      ? "Clipboard copy failed. You can still copy from the code block."
-                      : "Consumer apps should keep importing @ulib/ui/styles.css once in the app shell."}
-                </span>
-              </div>
-              <pre className="code-block">{exportSnippet}</pre>
-              <div className="catalog-list">
-                <div className="token-card">
-                  <div className="token-name">Paste inside this repo</div>
-                  <div className="theme-field-note">Replace the `:root` block in `packages/ui/src/styles/theme.css`.</div>
-                </div>
-                <div className="token-card">
-                  <div className="token-name">Paste in a Next app</div>
-                  <div className="theme-field-note">
-                    Keep `import "@ulib/ui/styles.css"` in `app/layout.tsx`, then paste the snippet into `app/globals.css`.
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+            <p className="theme-preview-note">
+              Tip: `Compact` is the fastest way to get the smaller text and tighter content density you asked for.
+            </p>
+          </CardContent>
+        </Card>
       </section>
 
       <section className="section-stack">

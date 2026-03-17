@@ -254,8 +254,12 @@ pre.code-block {
 .theme-builder-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(320px, 0.95fr) minmax(320px, 1.05fr);
   align-items: start;
+}
+
+.theme-builder-full {
+  grid-column: 1 / -1;
 }
 
 .theme-builder-stack {
@@ -382,8 +386,8 @@ pre.code-block {
 
 .theme-preview-grid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+  gap: 1.2rem;
+  grid-template-columns: minmax(320px, 0.8fr) minmax(0, 1.2fr);
   align-items: start;
 }
 

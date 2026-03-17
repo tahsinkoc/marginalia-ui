@@ -18,8 +18,8 @@ module.exports = {
         danger: "rgb(var(--marginalia-color-danger) / <alpha-value>)"
       },
       boxShadow: {
-        panel: "0 22px 45px -30px rgba(88, 64, 42, 0.35), 0 12px 24px -18px rgba(120, 91, 63, 0.2)",
-        field: "0 1px 0 rgba(255, 255, 255, 0.65) inset, 0 16px 30px -24px rgba(87, 63, 39, 0.36)"
+        panel: "var(--marginalia-shadow-panel)",
+        field: "var(--marginalia-shadow-field)"
       },
       keyframes: {
         "overlay-in": {

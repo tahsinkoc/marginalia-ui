@@ -10,9 +10,14 @@ html {
 body {
   position: relative;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 34%),
-    radial-gradient(circle at top right, rgba(229, 216, 196, 0.55), transparent 28%),
-    linear-gradient(180deg, rgba(247, 242, 233, 0.96) 0%, rgba(244, 238, 229, 0.98) 50%, rgba(239, 232, 221, 1) 100%);
+    radial-gradient(circle at top left, rgb(var(--marginalia-color-surface) / 0.84), transparent 34%),
+    radial-gradient(circle at top right, rgb(var(--marginalia-color-accent-soft) / 0.42), transparent 28%),
+    linear-gradient(
+      180deg,
+      rgb(var(--marginalia-color-canvas) / 0.98) 0%,
+      rgb(var(--marginalia-color-surface) / 0.94) 44%,
+      rgb(var(--marginalia-color-surface-alt) / 0.98) 100%
+    );
   color: rgb(var(--marginalia-color-text));
 }
 
@@ -21,8 +26,8 @@ body::before {
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(157, 112, 78, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(157, 112, 78, 0.045) 1px, transparent 1px);
+    linear-gradient(rgb(var(--marginalia-color-accent) / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--marginalia-color-accent) / 0.055) 1px, transparent 1px);
   background-size: 88px 88px;
   content: "";
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0));
@@ -49,8 +54,8 @@ a {
   right: 0;
   z-index: 20;
   width: 100%;
-  border-bottom: 1px solid rgba(var(--marginalia-color-border), 0.4);
-  background: rgba(var(--marginalia-color-surface), 0.52);
+  border-bottom: 1px solid rgb(var(--marginalia-color-border) / 0.4);
+  background: rgb(var(--marginalia-color-surface) / 0.52);
   backdrop-filter: blur(10px);
   transition:
     background-color 180ms ease,
@@ -60,9 +65,9 @@ a {
 }
 
 .site-header.is-scrolled {
-  border-bottom-color: rgba(var(--marginalia-color-border), 0.82);
-  background: rgba(var(--marginalia-color-surface), 0.92);
-  box-shadow: 0 16px 36px -28px rgba(90, 66, 43, 0.34);
+  border-bottom-color: rgb(var(--marginalia-color-border) / 0.82);
+  background: rgb(var(--marginalia-color-surface) / 0.92);
+  box-shadow: var(--marginalia-shadow-panel);
   backdrop-filter: blur(18px);
 }
 
@@ -135,9 +140,30 @@ a {
   gap: 0.7rem;
 }
 
+.nav-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-left: 0.35rem;
+}
+
+.nav-theme-label {
+  white-space: nowrap;
+}
+
 .nav-mobile-link {
   justify-content: flex-start;
   text-decoration: none;
+}
+
+.nav-mobile-theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid rgb(var(--marginalia-color-border) / 0.65);
+  margin-top: 0.4rem;
+  padding-top: 1rem;
 }
 
 .page-stack {
@@ -231,10 +257,10 @@ a {
 }
 
 .showcase-panel {
-  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
+  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
   border-radius: 32px;
-  background: rgba(255, 250, 243, 0.74);
-  box-shadow: 0 20px 50px -34px rgba(90, 66, 43, 0.3);
+  background: rgb(var(--marginalia-color-surface) / 0.78);
+  box-shadow: var(--marginalia-shadow-panel);
   padding: 1.4rem;
   backdrop-filter: blur(10px);
 }
@@ -261,15 +287,15 @@ a {
 .token-card {
   display: grid;
   gap: 0.9rem;
-  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
+  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
   border-radius: 26px;
-  background: rgba(255, 250, 243, 0.82);
+  background: rgb(var(--marginalia-color-surface) / 0.82);
   padding: 1rem;
 }
 
 .token-swatch {
   height: 5rem;
-  border: 1px solid rgba(59, 47, 38, 0.08);
+  border: 1px solid rgb(var(--marginalia-color-text) / 0.08);
   border-radius: 18px;
 }
 
@@ -293,9 +319,9 @@ a {
 
 pre.code-block {
   overflow-x: auto;
-  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
+  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
   border-radius: 28px;
-  background: rgba(255, 250, 243, 0.82);
+  background: rgb(var(--marginalia-color-surface) / 0.82);
   padding: 1.25rem;
   color: rgb(var(--marginalia-color-text));
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
@@ -466,9 +492,9 @@ pre.code-block {
   display: grid;
   gap: 0.35rem;
   min-width: 11rem;
-  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
+  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
   border-radius: 22px;
-  background: rgba(255, 250, 243, 0.76);
+  background: rgb(var(--marginalia-color-surface) / 0.76);
   padding: 0.9rem 1rem;
   color: rgb(var(--marginalia-color-text));
   cursor: pointer;
@@ -478,13 +504,13 @@ pre.code-block {
 
 .theme-preset-button:hover {
   transform: translateY(-1px);
-  border-color: rgba(var(--marginalia-color-accent), 0.36);
-  background: rgba(var(--marginalia-color-accent-soft), 0.65);
+  border-color: rgb(var(--marginalia-color-accent) / 0.36);
+  background: rgb(var(--marginalia-color-accent-soft) / 0.65);
 }
 
 .theme-preset-button.is-active {
-  border-color: rgba(var(--marginalia-color-accent), 0.52);
-  background: rgba(var(--marginalia-color-accent-soft), 0.9);
+  border-color: rgb(var(--marginalia-color-accent) / 0.52);
+  background: rgb(var(--marginalia-color-accent-soft) / 0.9);
 }
 
 .theme-control-grid,
@@ -498,9 +524,9 @@ pre.code-block {
 .theme-range-field {
   display: grid;
   gap: 0.65rem;
-  border: 1px solid rgba(var(--marginalia-color-border), 0.85);
+  border: 1px solid rgb(var(--marginalia-color-border) / 0.85);
   border-radius: 22px;
-  background: rgba(255, 250, 243, 0.66);
+  background: rgb(var(--marginalia-color-surface) / 0.66);
   padding: 0.9rem 1rem;
 }
 
@@ -527,12 +553,12 @@ pre.code-block {
 }
 
 .theme-color-input::-webkit-color-swatch {
-  border: 1px solid rgba(var(--marginalia-color-border), 0.8);
+  border: 1px solid rgb(var(--marginalia-color-border) / 0.8);
   border-radius: 999px;
 }
 
 .theme-color-input::-moz-color-swatch {
-  border: 1px solid rgba(var(--marginalia-color-border), 0.8);
+  border: 1px solid rgb(var(--marginalia-color-border) / 0.8);
   border-radius: 999px;
 }
 
@@ -555,12 +581,12 @@ pre.code-block {
 }
 
 .theme-preview-shell {
-  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
+  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
   border-radius: 32px;
   background: linear-gradient(
     180deg,
-    rgba(var(--marginalia-color-surface), 0.98) 0%,
-    rgba(var(--marginalia-color-surface-alt), 0.72) 100%
+    rgb(var(--marginalia-color-surface) / 0.98) 0%,
+    rgb(var(--marginalia-color-surface-alt) / 0.72) 100%
   );
   padding: 1rem;
 }
@@ -568,8 +594,8 @@ pre.code-block {
 .theme-preview-canvas {
   border-radius: 28px;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 32%),
-    linear-gradient(180deg, rgba(var(--marginalia-color-canvas), 0.98) 0%, rgba(var(--marginalia-color-surface-alt), 0.58) 100%);
+    radial-gradient(circle at top left, rgb(var(--marginalia-color-surface) / 0.88), transparent 32%),
+    linear-gradient(180deg, rgb(var(--marginalia-color-canvas) / 0.98) 0%, rgb(var(--marginalia-color-surface-alt) / 0.58) 100%);
   padding: 1rem;
 }
 
@@ -657,9 +683,9 @@ pre.code-block {
   }
 }
 
-/* Paste into app/globals.css or replace the :root block in packages/ui/src/styles/theme.css */
-/* Paste into app/globals.css or replace the :root block in packages/ui/src/styles/theme.css */
+/* Docs theme overrides: compact default rhythm plus a matching dark variant. */
 :root {
+  color-scheme: light;
   --marginalia-color-canvas: 247 242 233;
   --marginalia-color-surface: 255 250 243;
   --marginalia-color-surface-alt: 239 231 218;
@@ -672,6 +698,12 @@ pre.code-block {
   --marginalia-color-success: 104 132 96;
   --marginalia-color-warning: 179 129 58;
   --marginalia-color-danger: 167 87 77;
+  --marginalia-shadow-panel:
+    0 22px 45px -30px rgba(88, 64, 42, 0.35),
+    0 12px 24px -18px rgba(120, 91, 63, 0.2);
+  --marginalia-shadow-field:
+    0 1px 0 rgba(255, 255, 255, 0.65) inset,
+    0 16px 30px -24px rgba(87, 63, 39, 0.36);
   --marginalia-radius-panel: 30.08px;
   --marginalia-radius-overlay: 26.32px;
   --marginalia-radius-field: 20.68px;
@@ -704,4 +736,27 @@ pre.code-block {
   --marginalia-size-textarea-min-height: 123.84px;
   --marginalia-line-height-body: 1.7;
   --marginalia-content-max-width: 40rem;
+}
+
+.dark,
+[data-marginalia-theme="dark"] {
+  color-scheme: dark;
+  --marginalia-color-canvas: 23 19 16;
+  --marginalia-color-surface: 33 27 23;
+  --marginalia-color-surface-alt: 45 36 30;
+  --marginalia-color-border: 82 67 56;
+  --marginalia-color-text: 239 226 210;
+  --marginalia-color-text-muted: 185 167 147;
+  --marginalia-color-accent: 199 154 114;
+  --marginalia-color-accent-soft: 70 55 42;
+  --marginalia-color-focus: 217 171 128;
+  --marginalia-color-success: 138 162 124;
+  --marginalia-color-warning: 207 160 90;
+  --marginalia-color-danger: 198 132 120;
+  --marginalia-shadow-panel:
+    0 28px 60px -34px rgba(8, 6, 5, 0.76),
+    0 14px 28px -20px rgba(120, 87, 57, 0.22);
+  --marginalia-shadow-field:
+    0 1px 0 rgba(255, 247, 236, 0.08) inset,
+    0 18px 36px -28px rgba(6, 5, 4, 0.72);
 }

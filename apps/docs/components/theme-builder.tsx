@@ -19,6 +19,8 @@ import {
   Textarea
 } from "@marginalia/ui";
 
+type ThemeMode = "light" | "dark";
+
 type ColorKey =
   | "canvas"
   | "surface"
@@ -34,6 +36,7 @@ type ColorKey =
   | "danger";
 
 type ThemeColors = Record<ColorKey, string>;
+type ThemeColorsByMode = Record<ThemeMode, ThemeColors>;
 
 type ScaleSettings = {
   fontScale: number;
@@ -47,7 +50,7 @@ type ThemePreset = {
   id: string;
   label: string;
   note: string;
-  colors: ThemeColors;
+  modes: ThemeColorsByMode;
 };
 
 type DensityPreset = {
@@ -72,100 +75,182 @@ const colorFields: Array<{ key: ColorKey; label: string; note: string; cssVar: s
   { key: "danger", label: "Danger", note: "Destructive actions", cssVar: "--marginalia-color-danger" }
 ];
 
+const shadowOrder = ["--marginalia-shadow-panel", "--marginalia-shadow-field"] as const;
+
 const themePresets: ThemePreset[] = [
   {
     id: "parchment",
     label: "Classic Warm",
-    note: "The current warm editorial default.",
-    colors: {
-      canvas: "#f7f2e9",
-      surface: "#fffaf3",
-      surfaceAlt: "#efe7da",
-      border: "#d3c5b1",
-      text: "#3b2f26",
-      textMuted: "#7b6c5c",
-      accent: "#9d704e",
-      accentSoft: "#e5d8c4",
-      focus: "#b5815a",
-      success: "#688460",
-      warning: "#b3813a",
-      danger: "#a7574d"
+    note: "The current warm editorial default in both light and dark study-hour variants.",
+    modes: {
+      light: {
+        canvas: "#f7f2e9",
+        surface: "#fffaf3",
+        surfaceAlt: "#efe7da",
+        border: "#d3c5b1",
+        text: "#3b2f26",
+        textMuted: "#7b6c5c",
+        accent: "#9d704e",
+        accentSoft: "#e5d8c4",
+        focus: "#b5815a",
+        success: "#688460",
+        warning: "#b3813a",
+        danger: "#a7574d"
+      },
+      dark: {
+        canvas: "#171310",
+        surface: "#211b17",
+        surfaceAlt: "#2d241e",
+        border: "#524338",
+        text: "#efe2d2",
+        textMuted: "#b9a793",
+        accent: "#c79a72",
+        accentSoft: "#46372a",
+        focus: "#d9ab82",
+        success: "#8aa17f",
+        warning: "#d0a05a",
+        danger: "#c68479"
+      }
     }
   },
   {
     id: "warm-blue",
     label: "Warm Blue",
-    note: "Dusty blue notes over parchment neutrals.",
-    colors: {
-      canvas: "#f3f0ea",
-      surface: "#fcfaf6",
-      surfaceAlt: "#e7e3dc",
-      border: "#cbc5bb",
-      text: "#30363c",
-      textMuted: "#66707a",
-      accent: "#6f8297",
-      accentSoft: "#dbe4ea",
-      focus: "#90a4b8",
-      success: "#6b8667",
-      warning: "#b68a4a",
-      danger: "#a6695f"
+    note: "Dusty blue notes over parchment neutrals, with a darker library-night companion.",
+    modes: {
+      light: {
+        canvas: "#f3f0ea",
+        surface: "#fcfaf6",
+        surfaceAlt: "#e7e3dc",
+        border: "#cbc5bb",
+        text: "#30363c",
+        textMuted: "#66707a",
+        accent: "#6f8297",
+        accentSoft: "#dbe4ea",
+        focus: "#90a4b8",
+        success: "#6b8667",
+        warning: "#b68a4a",
+        danger: "#a6695f"
+      },
+      dark: {
+        canvas: "#17191d",
+        surface: "#1f242b",
+        surfaceAlt: "#2a3139",
+        border: "#44505b",
+        text: "#ece3d8",
+        textMuted: "#b7aea5",
+        accent: "#97adc1",
+        accentSoft: "#2f3c49",
+        focus: "#b2c6d8",
+        success: "#86a181",
+        warning: "#c8a063",
+        danger: "#c08074"
+      }
     }
   },
   {
     id: "warm-green",
     label: "Warm Green",
-    note: "Quiet sage warmth for calmer dashboards.",
-    colors: {
-      canvas: "#f4f2ea",
-      surface: "#fdfbf6",
-      surfaceAlt: "#e7e4d7",
-      border: "#cec7b7",
-      text: "#34342d",
-      textMuted: "#6c6f60",
-      accent: "#768565",
-      accentSoft: "#dee6d4",
-      focus: "#92a380",
-      success: "#6f8b61",
-      warning: "#b08b4c",
-      danger: "#9d675e"
+    note: "Quiet sage warmth for calmer dashboards, with a darker reading-room version.",
+    modes: {
+      light: {
+        canvas: "#f4f2ea",
+        surface: "#fdfbf6",
+        surfaceAlt: "#e7e4d7",
+        border: "#cec7b7",
+        text: "#34342d",
+        textMuted: "#6c6f60",
+        accent: "#768565",
+        accentSoft: "#dee6d4",
+        focus: "#92a380",
+        success: "#6f8b61",
+        warning: "#b08b4c",
+        danger: "#9d675e"
+      },
+      dark: {
+        canvas: "#161713",
+        surface: "#1e211c",
+        surfaceAlt: "#293026",
+        border: "#43493b",
+        text: "#ece5d7",
+        textMuted: "#b4ac9d",
+        accent: "#9dae87",
+        accentSoft: "#333b2c",
+        focus: "#b5c69e",
+        success: "#8ea67d",
+        warning: "#c4a067",
+        danger: "#b77a71"
+      }
     }
   },
   {
     id: "warm-gray",
     label: "Warm Gray",
-    note: "Softer editorial neutrality with stone accents.",
-    colors: {
-      canvas: "#f4f2ee",
-      surface: "#fbf9f5",
-      surfaceAlt: "#e8e3dc",
-      border: "#cbc4bb",
-      text: "#35322f",
-      textMuted: "#716a63",
-      accent: "#8b7f74",
-      accentSoft: "#e3dbd3",
-      focus: "#a4978a",
-      success: "#6c8174",
-      warning: "#ab8550",
-      danger: "#99665d"
+    note: "Stone-like neutrality with a darker archive shelf interpretation.",
+    modes: {
+      light: {
+        canvas: "#f4f2ee",
+        surface: "#fbf9f5",
+        surfaceAlt: "#e8e3dc",
+        border: "#cbc4bb",
+        text: "#35322f",
+        textMuted: "#716a63",
+        accent: "#8b7f74",
+        accentSoft: "#e3dbd3",
+        focus: "#a4978a",
+        success: "#6c8174",
+        warning: "#ab8550",
+        danger: "#99665d"
+      },
+      dark: {
+        canvas: "#171513",
+        surface: "#201d1a",
+        surfaceAlt: "#2b2723",
+        border: "#47413c",
+        text: "#ede4d8",
+        textMuted: "#b7aea2",
+        accent: "#b19e8d",
+        accentSoft: "#37302a",
+        focus: "#c3b09f",
+        success: "#889c8d",
+        warning: "#c19a66",
+        danger: "#b97b72"
+      }
     }
   },
   {
     id: "warm-ink",
     label: "Warm White/Black",
-    note: "Warmer high-contrast paper and ink treatment.",
-    colors: {
-      canvas: "#f8f5ef",
-      surface: "#fffdf8",
-      surfaceAlt: "#efebe4",
-      border: "#d0c7bb",
-      text: "#211b18",
-      textMuted: "#60564d",
-      accent: "#7b6857",
-      accentSoft: "#e7dfd5",
-      focus: "#9a836f",
-      success: "#607a63",
-      warning: "#a97b40",
-      danger: "#8c5149"
+    note: "A warmer high-contrast paper-and-ink pair with a deep night mode counterpart.",
+    modes: {
+      light: {
+        canvas: "#f8f5ef",
+        surface: "#fffdf8",
+        surfaceAlt: "#efebe4",
+        border: "#d0c7bb",
+        text: "#211b18",
+        textMuted: "#60564d",
+        accent: "#7b6857",
+        accentSoft: "#e7dfd5",
+        focus: "#9a836f",
+        success: "#607a63",
+        warning: "#a97b40",
+        danger: "#8c5149"
+      },
+      dark: {
+        canvas: "#11100f",
+        surface: "#191715",
+        surfaceAlt: "#24211f",
+        border: "#3d3935",
+        text: "#f4ede4",
+        textMuted: "#c0b5a8",
+        accent: "#c1a58e",
+        accentSoft: "#342c25",
+        focus: "#d4b9a2",
+        success: "#89a08c",
+        warning: "#cb9a5d",
+        danger: "#b97870"
+      }
     }
   }
 ];
@@ -244,56 +329,78 @@ const metricOrder = [
   "--marginalia-content-max-width"
 ] as const;
 
-const defaultColors = themePresets[0].colors;
+const defaultPreset = themePresets[0];
 const defaultDensity = densityPresets[0].settings;
 
 export function ThemeBuilder() {
-  const [colors, setColors] = React.useState<ThemeColors>(defaultColors);
+  const [mode, setMode] = React.useState<ThemeMode>("light");
+  const [colorsByMode, setColorsByMode] = React.useState<ThemeColorsByMode>({
+    light: { ...defaultPreset.modes.light },
+    dark: { ...defaultPreset.modes.dark }
+  });
   const [density, setDensity] = React.useState<ScaleSettings>(defaultDensity);
-  const [activeThemePreset, setActiveThemePreset] = React.useState(themePresets[0].id);
+  const [activeThemePreset, setActiveThemePreset] = React.useState(defaultPreset.id);
   const [activeDensityPreset, setActiveDensityPreset] = React.useState(densityPresets[0].id);
   const [copyState, setCopyState] = React.useState<"idle" | "copied" | "failed">("idle");
 
-  const cssVars = React.useMemo(() => buildCssVariables(colors, density), [colors, density]);
-  const previewStyle = React.useMemo(() => cssVars as React.CSSProperties, [cssVars]);
+  const cssVarsByMode = React.useMemo(
+    () => ({
+      light: buildCssVariables(colorsByMode.light, density, "light"),
+      dark: buildCssVariables(colorsByMode.dark, density, "dark")
+    }),
+    [colorsByMode, density]
+  );
 
-  const exportSnippet = React.useMemo(() => {
-    const lines = [
-      "/* Paste into app/globals.css or replace the :root block in packages/ui/src/styles/theme.css */",
-      ":root {",
-      ...colorFields.map(({ cssVar, key }) => `  ${cssVar}: ${hexToRgbString(colors[key])};`),
-      ...metricOrder.map((cssVar) => `  ${cssVar}: ${cssVars[cssVar]};`),
-      "}"
-    ];
+  const activeColors = colorsByMode[mode];
+  const activeCssVars = cssVarsByMode[mode];
+  const previewStyle = React.useMemo(
+    () =>
+      ({
+        ...activeCssVars,
+        colorScheme: mode
+      }) as React.CSSProperties,
+    [activeCssVars, mode]
+  );
 
-    return lines.join("\n");
-  }, [colors, cssVars]);
+  const exportSnippet = React.useMemo(
+    () => buildExportSnippet(cssVarsByMode.light, cssVarsByMode.dark),
+    [cssVarsByMode.dark, cssVarsByMode.light]
+  );
 
   const tokenCards = React.useMemo(
     () =>
       colorFields.map((field) => ({
         name: field.label,
-        value: hexToRgbString(colors[field.key]),
-        hex: colors[field.key].toUpperCase(),
-        swatch: colors[field.key]
+        value: hexToRgbString(activeColors[field.key]),
+        hex: activeColors[field.key].toUpperCase(),
+        swatch: activeColors[field.key]
       })),
-    [colors]
+    [activeColors]
   );
 
   const scaleSummary = React.useMemo(
     () => [
-      { name: "Body text", value: cssVars["--marginalia-size-text-body"] },
-      { name: "Card padding", value: cssVars["--marginalia-space-panel"] },
-      { name: "Button md height", value: cssVars["--marginalia-size-control-md"] },
-      { name: "Reading width", value: cssVars["--marginalia-content-max-width"] }
+      { name: "Body text", value: activeCssVars["--marginalia-size-text-body"] },
+      { name: "Card padding", value: activeCssVars["--marginalia-space-panel"] },
+      { name: "Button md height", value: activeCssVars["--marginalia-size-control-md"] },
+      { name: "Reading width", value: activeCssVars["--marginalia-content-max-width"] }
     ],
-    [cssVars]
+    [activeCssVars]
   );
 
-  const handleColorChange = React.useCallback((key: ColorKey, value: string) => {
-    setColors((current) => ({ ...current, [key]: value }));
-    setActiveThemePreset("custom");
-  }, []);
+  const handleColorChange = React.useCallback(
+    (key: ColorKey, value: string) => {
+      setColorsByMode((current) => ({
+        ...current,
+        [mode]: {
+          ...current[mode],
+          [key]: value
+        }
+      }));
+      setActiveThemePreset("custom");
+    },
+    [mode]
+  );
 
   const handleDensityChange = React.useCallback((key: keyof ScaleSettings, value: number) => {
     setDensity((current) => ({ ...current, [key]: value }));
@@ -318,10 +425,26 @@ export function ThemeBuilder() {
           <CardHeader>
             <CardTitle>Build the theme</CardTitle>
             <CardDescription>
-              Choose a warm preset, then tighten or relax typography, padding, controls, radius, and reading width with a few sliders.
+              Choose a warm preset, switch between light and dark tokens, then tighten or relax typography, padding,
+              controls, radius, and reading width with a few sliders.
             </CardDescription>
           </CardHeader>
           <CardContent className="theme-builder-stack">
+            <div className="section-stack" style={{ gap: "0.85rem" }}>
+              <div className="eyebrow">Editing mode</div>
+              <div className="inline-actions" style={{ marginTop: 0 }}>
+                <Button variant={mode === "light" ? "secondary" : "ghost"} size="sm" onClick={() => setMode("light")}>
+                  Light tokens
+                </Button>
+                <Button variant={mode === "dark" ? "secondary" : "ghost"} size="sm" onClick={() => setMode("dark")}>
+                  Dark tokens
+                </Button>
+              </div>
+              <div className="theme-field-note">
+                Presets load both modes together. Color pickers below only edit the currently selected {mode} variant.
+              </div>
+            </div>
+
             <div className="section-stack" style={{ gap: "0.85rem" }}>
               <div className="eyebrow">Color presets</div>
               <div className="theme-preset-row">
@@ -331,7 +454,10 @@ export function ThemeBuilder() {
                     type="button"
                     className={`theme-preset-button${activeThemePreset === preset.id ? " is-active" : ""}`}
                     onClick={() => {
-                      setColors(preset.colors);
+                      setColorsByMode({
+                        light: { ...preset.modes.light },
+                        dark: { ...preset.modes.dark }
+                      });
                       setActiveThemePreset(preset.id);
                     }}
                   >
@@ -363,7 +489,7 @@ export function ThemeBuilder() {
             </div>
 
             <div className="section-stack" style={{ gap: "0.85rem" }}>
-              <div className="eyebrow">Colors</div>
+              <div className="eyebrow">{mode === "light" ? "Light colors" : "Dark colors"}</div>
               <div className="theme-control-grid">
                 {colorFields.map((field) => (
                   <div key={field.key} className="theme-color-field">
@@ -376,11 +502,11 @@ export function ThemeBuilder() {
                         aria-label={field.label}
                         className="theme-color-input"
                         type="color"
-                        value={colors[field.key]}
+                        value={activeColors[field.key]}
                         onChange={(event) => handleColorChange(field.key, event.currentTarget.value)}
                       />
                     </div>
-                    <div className="mono-note">{colors[field.key].toUpperCase()}</div>
+                    <div className="mono-note">{activeColors[field.key].toUpperCase()}</div>
                   </div>
                 ))}
               </div>
@@ -443,7 +569,8 @@ export function ThemeBuilder() {
           <CardHeader>
             <CardTitle>Export CSS tokens</CardTitle>
             <CardDescription>
-              Copy the generated `:root` block, then paste it either into your consumer app&apos;s `app/globals.css` or into Marginalia&apos;s own `packages/ui/src/styles/theme.css`.
+              Copy the generated light and dark theme blocks, then paste them either into your consumer app&apos;s
+              `app/globals.css` or into Marginalia&apos;s own `packages/ui/src/styles/theme.css`.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -454,19 +581,22 @@ export function ThemeBuilder() {
                   ? "Copied to clipboard."
                   : copyState === "failed"
                     ? "Clipboard copy failed. You can still copy from the code block."
-                    : "Consumer apps should keep importing @marginalia/ui/styles.css once in the app shell."}
+                    : "Toggle dark mode by applying the `dark` class or `data-marginalia-theme=\"dark\"` to html, body, or a wrapper."}
               </span>
             </div>
             <pre className="code-block">{exportSnippet}</pre>
             <div className="catalog-list">
               <div className="token-card">
                 <div className="token-name">Paste inside this repo</div>
-                <div className="theme-field-note">Replace the `:root` block in `packages/ui/src/styles/theme.css`.</div>
+                <div className="theme-field-note">
+                  Replace the light `:root` block and the dark block in `packages/ui/src/styles/theme.css`.
+                </div>
               </div>
               <div className="token-card">
                 <div className="token-name">Paste in a Next app</div>
                 <div className="theme-field-note">
-                  Keep `import "@marginalia/ui/styles.css"` in `app/layout.tsx`, then paste the snippet into `app/globals.css`.
+                  Keep `import "@marginalia/ui/styles.css"` in `app/layout.tsx`, then paste both blocks into
+                  `app/globals.css`.
                 </div>
               </div>
             </div>
@@ -477,11 +607,18 @@ export function ThemeBuilder() {
           <CardHeader>
             <CardTitle>Live preview</CardTitle>
             <CardDescription>
-              The preview below applies your token overrides directly to Marginalia components, so you can feel spacing and type changes before exporting.
+              The preview below applies your token overrides directly to Marginalia components, so you can feel the
+              light and dark variants before exporting.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="theme-preview-shell" style={previewStyle}>
+            <div className="theme-export-actions">
+              <Badge variant="accent">{mode === "light" ? "Light preview" : "Dark preview"}</Badge>
+              <span className="theme-preview-note">
+                Export always includes both variants, even while you are previewing only one side.
+              </span>
+            </div>
+            <div className="theme-preview-shell" style={previewStyle} data-marginalia-theme={mode}>
               <div className="theme-preview-canvas">
                 <div className="theme-preview-grid">
                   <Card className="theme-preview-surface">
@@ -494,14 +631,14 @@ export function ThemeBuilder() {
                     </CardHeader>
                     <CardContent>
                       <div className="section-stack" style={{ gap: "0.7rem" }}>
-                        <Label htmlFor="theme-builder-email">Project name</Label>
-                        <Input id="theme-builder-email" value="Marginalia Theme Builder" readOnly />
+                        <Label htmlFor="theme-builder-project">Project name</Label>
+                        <Input id="theme-builder-project" value="Marginalia Theme Builder" readOnly />
                       </div>
                       <div className="section-stack" style={{ gap: "0.7rem" }}>
                         <Label htmlFor="theme-builder-notes">Editorial notes</Label>
                         <Textarea
                           id="theme-builder-notes"
-                          value="Compact mode lowers font, padding, and control sizes without sacrificing the warm tone."
+                          value="Dark mode stays warm, academic, and legible instead of turning into cold graphite."
                           readOnly
                         />
                       </div>
@@ -521,17 +658,20 @@ export function ThemeBuilder() {
                     <RichTextKicker>Editorial sample</RichTextKicker>
                     <h1>Theme tokens should travel cleanly from preview to production.</h1>
                     <RichTextLead>
-                      A single snippet can now tune warm color, control density, padding rhythm, and reading width without adding a runtime theme provider.
+                      A single snippet can now tune warm color, control density, padding rhythm, and reading width for
+                      both light and dark modes without adding a runtime theme provider.
                     </RichTextLead>
                     <RichTextQuote>
-                      The best theme builder feels simple enough to trust, then exports values clear enough to paste without guessing.
+                      The best theme builder feels simple enough to trust, then exports values clear enough to paste
+                      without guessing.
                     </RichTextQuote>
                     <h2>What changes now</h2>
                     <p>
-                      This builder exports not only colors, but also the core sizing tokens that drive card padding, field height, button size, and rich text measure.
+                      This builder exports not only colors, but also shared sizing tokens and matching shadow values so
+                      the darker variant keeps the same soft Marginalia character.
                     </p>
                     <RichTextMeta>
-                      <span>Live tokens</span>
+                      <span>Light + dark</span>
                       <span>Warm presets</span>
                       <span>No runtime provider</span>
                     </RichTextMeta>
@@ -540,7 +680,8 @@ export function ThemeBuilder() {
               </div>
             </div>
             <p className="theme-preview-note">
-              Tip: `Compact` is the fastest way to get the smaller text and tighter content density you asked for.
+              Tip: `Compact` plus the dark variant is a good starting point for denser back-office or research-facing
+              interfaces.
             </p>
           </CardContent>
         </Card>
@@ -549,9 +690,10 @@ export function ThemeBuilder() {
       <section className="section-stack">
         <div className="section-copy">
           <div className="eyebrow">Current output</div>
-          <h2 className="section-title">Color and density tokens at a glance.</h2>
+          <h2 className="section-title">{mode === "light" ? "Light tokens" : "Dark tokens"} at a glance.</h2>
           <p className="lead">
-            Swatches reflect the current palette. The summary cards beneath them show the main size values your preview is using right now.
+            Swatches reflect the currently edited palette. The summary cards beneath them show the main size values
+            your preview is using right now.
           </p>
         </div>
         <div className="token-grid">
@@ -616,7 +758,7 @@ function RangeField({
   );
 }
 
-function buildCssVariables(colors: ThemeColors, settings: ScaleSettings) {
+function buildCssVariables(colors: ThemeColors, settings: ScaleSettings, mode: ThemeMode) {
   const metrics: Record<(typeof metricOrder)[number], string> = {
     "--marginalia-radius-panel": px(32 * settings.radiusScale),
     "--marginalia-radius-overlay": px(28 * settings.radiusScale),
@@ -652,17 +794,65 @@ function buildCssVariables(colors: ThemeColors, settings: ScaleSettings) {
     "--marginalia-content-max-width": rem(settings.contentWidth)
   };
 
-  const colorVars = Object.fromEntries(
-    colorFields.map(({ cssVar, key }) => [cssVar, hexToRgbString(colors[key])])
-  );
+  const colorVars = Object.fromEntries(colorFields.map(({ cssVar, key }) => [cssVar, hexToRgbString(colors[key])]));
+  const shadowVars = buildShadowVariables(colors, mode);
 
   return {
     ...colorVars,
+    ...shadowVars,
     ...metrics
   } as Record<string, string>;
 }
 
+function buildShadowVariables(colors: ThemeColors, mode: ThemeMode) {
+  const panelShadow =
+    mode === "light"
+      ? `0 22px 45px -30px ${rgbaFromHex(colors.text, 0.34)}, 0 12px 24px -18px ${rgbaFromHex(colors.accent, 0.2)}`
+      : `0 28px 60px -34px ${rgbaFromHex(colors.canvas, 0.78)}, 0 14px 28px -20px ${rgbaFromHex(colors.accent, 0.22)}`;
+
+  const fieldShadow =
+    mode === "light"
+      ? `0 1px 0 ${rgbaFromHex(colors.surface, 0.68)} inset, 0 16px 30px -24px ${rgbaFromHex(colors.text, 0.28)}`
+      : `0 1px 0 ${rgbaFromHex(colors.surface, 0.12)} inset, 0 18px 36px -28px ${rgbaFromHex(colors.canvas, 0.72)}`;
+
+  return {
+    "--marginalia-shadow-panel": panelShadow,
+    "--marginalia-shadow-field": fieldShadow
+  } as Record<(typeof shadowOrder)[number], string>;
+}
+
+function buildExportSnippet(lightCssVars: Record<string, string>, darkCssVars: Record<string, string>) {
+  return [
+    "/* Paste into app/globals.css or replace the light and dark theme blocks in packages/ui/src/styles/theme.css */",
+    ":root {",
+    "  color-scheme: light;",
+    ...colorFields.map(({ cssVar }) => `  ${cssVar}: ${lightCssVars[cssVar]};`),
+    ...shadowOrder.map((cssVar) => `  ${cssVar}: ${lightCssVars[cssVar]};`),
+    ...metricOrder.map((cssVar) => `  ${cssVar}: ${lightCssVars[cssVar]};`),
+    "}",
+    "",
+    ".dark,",
+    '[data-marginalia-theme="dark"] {',
+    "  color-scheme: dark;",
+    ...colorFields.map(({ cssVar }) => `  ${cssVar}: ${darkCssVars[cssVar]};`),
+    ...shadowOrder.map((cssVar) => `  ${cssVar}: ${darkCssVars[cssVar]};`),
+    "}"
+  ].join("\n");
+}
+
 function hexToRgbString(hex: string) {
+  const { red, green, blue } = hexToRgb(hex);
+
+  return `${red} ${green} ${blue}`;
+}
+
+function rgbaFromHex(hex: string, alpha: number) {
+  const { red, green, blue } = hexToRgb(hex);
+
+  return `rgba(${red}, ${green}, ${blue}, ${trimNumber(alpha)})`;
+}
+
+function hexToRgb(hex: string) {
   const sanitized = hex.replace("#", "");
   const normalized =
     sanitized.length === 3
@@ -672,11 +862,11 @@ function hexToRgbString(hex: string) {
           .join("")
       : sanitized;
 
-  const red = Number.parseInt(normalized.slice(0, 2), 16);
-  const green = Number.parseInt(normalized.slice(2, 4), 16);
-  const blue = Number.parseInt(normalized.slice(4, 6), 16);
-
-  return `${red} ${green} ${blue}`;
+  return {
+    red: Number.parseInt(normalized.slice(0, 2), 16),
+    green: Number.parseInt(normalized.slice(2, 4), 16),
+    blue: Number.parseInt(normalized.slice(4, 6), 16)
+  };
 }
 
 function px(value: number) {
@@ -690,4 +880,3 @@ function rem(value: number) {
 function trimNumber(value: number) {
   return Number.parseFloat(value.toFixed(2)).toString();
 }
-

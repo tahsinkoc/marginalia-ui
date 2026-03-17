@@ -12,8 +12,10 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  Switch,
   buttonVariants
 } from "@marginalia/ui";
+import { useDocsTheme } from "./docs-theme-provider";
 
 const navigation = [
   { href: "/", label: "Overview" },
@@ -22,12 +24,11 @@ const navigation = [
   { href: "/theme", label: "Theme" }
 ];
 
-const brandName = "Marginalia";
-
 export function DocsNav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const { mode, setMode } = useDocsTheme();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +73,15 @@ export function DocsNav() {
             })}
           </nav>
 
+          <div className="nav-theme-toggle nav-links-desktop">
+            <span className="mono-note nav-theme-label">Dark</span>
+            <Switch
+              aria-label="Toggle dark mode"
+              checked={mode === "dark"}
+              onCheckedChange={(checked) => setMode(checked ? "dark" : "light")}
+            />
+          </div>
+
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="sm" className="nav-mobile-trigger" aria-label="Open navigation menu">
@@ -102,6 +112,14 @@ export function DocsNav() {
                   );
                 })}
               </nav>
+              <div className="nav-mobile-theme">
+                <span className="token-name">Dark mode</span>
+                <Switch
+                  aria-label="Toggle dark mode"
+                  checked={mode === "dark"}
+                  onCheckedChange={(checked) => setMode(checked ? "dark" : "light")}
+                />
+              </div>
             </SheetContent>
           </Sheet>
         </div>

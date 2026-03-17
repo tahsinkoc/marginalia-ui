@@ -1,7 +1,17 @@
 export { Badge } from "./components/badge";
 export type { BadgeProps } from "./components/badge";
+export { Alert, AlertDescription, AlertTitle } from "./components/alert";
+export type { AlertProps } from "./components/alert";
 export { Button, buttonVariants } from "./components/button";
 export type { ButtonProps } from "./components/button";
+export {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from "./components/breadcrumb";
 export {
   Card,
   CardContent,
@@ -32,6 +42,9 @@ export {
   PaginationPrevious
 } from "./components/pagination";
 export type { PaginationLinkProps } from "./components/pagination";
+export { Skeleton } from "./components/skeleton";
+export { Stepper, StepperItem } from "./components/stepper";
+export type { StepperItemProps, StepperOrientation, StepperProps, StepStatus } from "./components/stepper";
 export {
   Table,
   TableBody,

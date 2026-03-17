@@ -1,7 +1,19 @@
 export { Badge } from "./components/badge";
 export type { BadgeProps } from "./components/badge";
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/accordion";
+export { Alert, AlertDescription, AlertTitle } from "./components/alert";
+export type { AlertProps } from "./components/alert";
+export { Avatar, AvatarFallback, AvatarImage } from "./components/avatar";
 export { Button, buttonVariants } from "./components/button";
 export type { ButtonProps } from "./components/button";
+export {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from "./components/breadcrumb";
 export {
   Card,
   CardContent,
@@ -79,10 +91,28 @@ export {
   PaginationPrevious
 } from "./components/pagination";
 export type { PaginationLinkProps } from "./components/pagination";
+export { Progress } from "./components/progress";
+export type { ProgressProps } from "./components/progress";
 export { RadioGroup, RadioItem } from "./components/radio";
 export type { RadioGroupProps, RadioItemProps, RadioOption } from "./components/radio";
 export { Select } from "./components/select";
 export type { SelectOption, SelectProps } from "./components/select";
+export {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetOverlay,
+  SheetPortal,
+  SheetTitle,
+  SheetTrigger
+} from "./components/sheet";
+export type { SheetContentProps } from "./components/sheet";
+export { Skeleton } from "./components/skeleton";
+export { Stepper, StepperItem } from "./components/stepper";
+export type { StepperItemProps, StepperOrientation, StepperProps, StepStatus } from "./components/stepper";
 export { Switch } from "./components/switch";
 export type { SwitchProps } from "./components/switch";
 export {

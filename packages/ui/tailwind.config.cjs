@@ -53,6 +53,50 @@ module.exports = {
         "toast-out": {
           from: { opacity: "1", transform: "translateY(0) scale(1)" },
           to: { opacity: "0", transform: "translateY(12px) scale(0.985)" }
+        },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" }
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" }
+        },
+        "sheet-in-right": {
+          from: { opacity: "0", transform: "translateX(20px)" },
+          to: { opacity: "1", transform: "translateX(0)" }
+        },
+        "sheet-out-right": {
+          from: { opacity: "1", transform: "translateX(0)" },
+          to: { opacity: "0", transform: "translateX(20px)" }
+        },
+        "sheet-in-left": {
+          from: { opacity: "0", transform: "translateX(-20px)" },
+          to: { opacity: "1", transform: "translateX(0)" }
+        },
+        "sheet-out-left": {
+          from: { opacity: "1", transform: "translateX(0)" },
+          to: { opacity: "0", transform: "translateX(-20px)" }
+        },
+        "sheet-in-top": {
+          from: { opacity: "0", transform: "translateY(-20px)" },
+          to: { opacity: "1", transform: "translateY(0)" }
+        },
+        "sheet-out-top": {
+          from: { opacity: "1", transform: "translateY(0)" },
+          to: { opacity: "0", transform: "translateY(-20px)" }
+        },
+        "sheet-in-bottom": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" }
+        },
+        "sheet-out-bottom": {
+          from: { opacity: "1", transform: "translateY(0)" },
+          to: { opacity: "0", transform: "translateY(20px)" }
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" }
         }
       },
       animation: {
@@ -63,7 +107,18 @@ module.exports = {
         "float-in": "float-in 180ms cubic-bezier(0.16, 1, 0.3, 1)",
         "float-out": "float-out 140ms ease-in",
         "toast-in": "toast-in 240ms cubic-bezier(0.16, 1, 0.3, 1)",
-        "toast-out": "toast-out 180ms ease-in"
+        "toast-out": "toast-out 180ms ease-in",
+        "accordion-down": "accordion-down 220ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "accordion-up": "accordion-up 180ms ease-in",
+        "sheet-in-right": "sheet-in-right 260ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "sheet-out-right": "sheet-out-right 180ms ease-in",
+        "sheet-in-left": "sheet-in-left 260ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "sheet-out-left": "sheet-out-left 180ms ease-in",
+        "sheet-in-top": "sheet-in-top 240ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "sheet-out-top": "sheet-out-top 180ms ease-in",
+        "sheet-in-bottom": "sheet-in-bottom 240ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "sheet-out-bottom": "sheet-out-bottom 180ms ease-in",
+        shimmer: "shimmer 1.8s ease-in-out infinite"
       },
       fontFamily: {
         serif: ["var(--ulib-font-serif)", "Georgia", "serif"],

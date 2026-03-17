@@ -3,7 +3,23 @@
 import { useMemo, useState } from "react";
 
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Badge,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
   Button,
   DatePicker,
   Card,
@@ -45,8 +61,19 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  Progress,
   RadioGroup,
   Select,
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  Skeleton,
+  Stepper,
+  StepperItem,
   Switch,
   Table,
   TableBody,
@@ -219,6 +246,39 @@ export default function ComponentsPage() {
 
           <ShowcasePanel className="span-6">
             <div className="section-stack">
+              <div className="eyebrow">Alert</div>
+              <Alert variant="warning">
+                <AlertTitle>Review window is narrowing</AlertTitle>
+                <AlertDescription>
+                  The current draft has been waiting for editorial approval for 48 hours. A gentle reminder helps keep the flow moving.
+                </AlertDescription>
+              </Alert>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
+              <div className="eyebrow">Breadcrumb</div>
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="#">Library</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="#">Editorial</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Review draft</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
               <div className="eyebrow">Fields</div>
               <div className="section-stack">
                 <div className="section-stack" style={{ gap: "0.65rem" }}>
@@ -307,6 +367,24 @@ export default function ComponentsPage() {
               <p className="lead" style={{ fontSize: "1rem" }}>
                 Current value: <span className="mono-note">{comboboxValue}</span>
               </p>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
+              <div className="eyebrow">Avatar</div>
+              <div className="inline-actions">
+                <Avatar>
+                  <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Editor portrait" />
+                  <AvatarFallback>EM</AvatarFallback>
+                </Avatar>
+                <Avatar className="h-12 w-12">
+                  <AvatarFallback>AR</AvatarFallback>
+                </Avatar>
+                <Avatar className="h-14 w-14">
+                  <AvatarFallback>SC</AvatarFallback>
+                </Avatar>
+              </div>
             </div>
           </ShowcasePanel>
 
@@ -466,11 +544,102 @@ export default function ComponentsPage() {
 
           <ShowcasePanel className="span-6">
             <div className="section-stack">
+              <div className="eyebrow">Progress</div>
+              <div className="section-stack" style={{ gap: "0.9rem" }}>
+                <div className="section-stack" style={{ gap: "0.5rem" }}>
+                  <span className="mono-note">Editorial review · 68%</span>
+                  <Progress value={68} />
+                </div>
+                <div className="section-stack" style={{ gap: "0.5rem" }}>
+                  <span className="mono-note">Publication readiness · 42%</span>
+                  <Progress value={42} variant="warning" />
+                </div>
+              </div>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
+              <div className="eyebrow">Accordion</div>
+              <Accordion type="single" collapsible className="grid gap-3">
+                <AccordionItem value="voice">
+                  <AccordionTrigger>Why this visual tone?</AccordionTrigger>
+                  <AccordionContent>
+                    The kit aims for scholarly calm rather than startup gloss, so spacing, radius, and contrast feel measured.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="motion">
+                  <AccordionTrigger>How is motion handled?</AccordionTrigger>
+                  <AccordionContent>
+                    Movements stay short and soft. Panels open with gentle lift and collapse without theatrical overshoot.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
+              <div className="eyebrow">Sheet</div>
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline">Open side panel</Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                  <SheetHeader>
+                    <Badge variant="accent">Workflow</Badge>
+                    <SheetTitle>Editorial side panel</SheetTitle>
+                    <SheetDescription>
+                      Sheets reuse the same warm surfaces as dialogs, but slide from an edge for denser utility flows.
+                    </SheetDescription>
+                  </SheetHeader>
+                  <Card>
+                    <CardContent>
+                      <Input readOnly value="Annotations ready for final pass." />
+                    </CardContent>
+                  </Card>
+                  <SheetFooter>
+                    <Button variant="secondary">Dismiss</Button>
+                    <Button>Continue</Button>
+                  </SheetFooter>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
               <div className="eyebrow">Toast</div>
               <Button onClick={() => setToastOpen(true)}>Show publication toast</Button>
               <p className="lead" style={{ fontSize: "1rem" }}>
                 Toast stays understated and slides in with the same motion language as the rest of the system.
               </p>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
+              <div className="eyebrow">Stepper</div>
+              <Stepper>
+                <StepperItem
+                  step="1"
+                  status="complete"
+                  title="Draft prepared"
+                  description="Content structure and editorial tone have been approved."
+                />
+                <StepperItem
+                  step="2"
+                  status="current"
+                  title="Design review"
+                  description="Palette, spacing, and interaction details are being refined."
+                />
+                <StepperItem
+                  step="3"
+                  status="upcoming"
+                  title="Publish"
+                  description="Final assets and documentation will be shipped next."
+                />
+              </Stepper>
             </div>
           </ShowcasePanel>
 
@@ -565,6 +734,23 @@ export default function ComponentsPage() {
                   </Button>
                 </EmptyStateFooter>
               </EmptyState>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
+              <div className="eyebrow">Skeleton</div>
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-28 rounded-full" />
+                  <Skeleton className="h-10 w-3/4" />
+                </CardHeader>
+                <CardContent className="gap-3">
+                  <Skeleton className="h-12 w-full" />
+                  <Skeleton className="h-12 w-[88%]" />
+                  <Skeleton className="h-28 w-full rounded-[24px]" />
+                </CardContent>
+              </Card>
             </div>
           </ShowcasePanel>
         </section>

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Manrope, Newsreader } from "next/font/google";
 
 import "@ulib/ui/styles.css";
 import "./globals.css";
+import { DocsNav } from "../components/docs-nav";
 
 const editorial = Newsreader({
   subsets: ["latin"],
@@ -19,42 +19,22 @@ const sans = Manrope({
 
 export const metadata: Metadata = {
   title: "ULib",
-  description: "Academic and elegant React UI kit for the Next.js ecosystem."
+  description: "Academic and elegant React UI kit for the Next.js ecosystem, shaped by the Marginalia theme."
 };
-
-const navigation = [
-  { href: "/", label: "Overview" },
-  { href: "/components", label: "Components" },
-  { href: "/theme", label: "Theme" }
-];
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${editorial.variable} ${sans.variable}`}>
         <div className="docs-shell">
-          <header className="site-header">
-            <div className="brand-lockup">
-              <Link href="/" className="brand-mark">
-                ULib
-              </Link>
-              <div className="brand-note">Warm light React system</div>
-            </div>
-            <nav className="nav-links" aria-label="Primary">
-              {navigation.map((item) => (
-                <Link key={item.href} href={item.href} className="nav-link">
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </header>
+          <DocsNav />
           <main className="page-stack">{children}</main>
           <footer className="footer-note">
-            Built for calm interfaces, editorial rhythm, and thoughtful defaults in React + Next.js.
+            Built for calm interfaces, editorial rhythm, and thoughtful defaults in React + Next.js. Theme:
+            Marginalia.
           </footer>
         </div>
       </body>
     </html>
   );
 }
-

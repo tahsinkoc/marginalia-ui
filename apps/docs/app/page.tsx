@@ -23,7 +23,7 @@ export default function HomePage() {
     <>
       <section className="hero-grid">
         <div className="section-stack">
-          <Badge variant="accent">Warm light design language</Badge>
+          <Badge variant="accent">Marginalia theme</Badge>
           <div className="eyebrow">React + Next.js UI library</div>
           <h1 className="hero-title">Thoughtful components with an editorial, elegant cadence.</h1>
           <p className="lead">

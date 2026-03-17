@@ -18,6 +18,7 @@ import {
 const navigation = [
   { href: "/", label: "Overview" },
   { href: "/components", label: "Components" },
+  { href: "/usage", label: "Usage" },
   { href: "/theme", label: "Theme" }
 ];
 
@@ -82,7 +83,7 @@ export function DocsNav() {
               <SheetHeader>
                 <Badge variant="accent">Marginalia</Badge>
                 <SheetTitle>Documentation</SheetTitle>
-                <SheetDescription>Browse the overview, components, and theme builder on smaller screens.</SheetDescription>
+                <SheetDescription>Browse the overview, components, usage guides, and theme builder on smaller screens.</SheetDescription>
               </SheetHeader>
               <nav className="nav-mobile-links" aria-label="Mobile primary">
                 {navigation.map((item) => {

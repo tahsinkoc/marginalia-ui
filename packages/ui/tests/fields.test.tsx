@@ -21,6 +21,9 @@ describe("Form fields", () => {
     const textarea = screen.getByLabelText(/notes/i);
 
     expect(textarea).toHaveAttribute("aria-invalid", "true");
-    expect(textarea).toHaveClass("px-5", "text-base");
+    expect(textarea).toHaveClass(
+      "px-[var(--ulib-space-control-x-lg)]",
+      "text-[length:var(--ulib-size-text-body)]"
+    );
   });
 });

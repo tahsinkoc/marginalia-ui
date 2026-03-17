@@ -20,7 +20,9 @@ describe("Button", () => {
       </Button>
     );
 
-    expect(screen.getByRole("button", { name: /review draft/i })).toHaveClass("border-border", "h-12");
+    expect(screen.getByRole("button", { name: /review draft/i })).toHaveClass(
+      "border-border",
+      "h-[var(--ulib-size-control-lg)]"
+    );
   });
 });
-

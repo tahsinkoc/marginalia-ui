@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/cn";
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full border border-transparent font-medium tracking-elegant transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus/40 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas disabled:pointer-events-none disabled:opacity-60",
+  "inline-flex items-center justify-center gap-2 rounded-[var(--ulib-radius-pill)] border border-transparent font-medium tracking-elegant transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus/40 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas disabled:pointer-events-none disabled:opacity-60",
   {
     variants: {
       variant: {
@@ -15,9 +15,9 @@ export const buttonVariants = cva(
         link: "bg-transparent text-accent shadow-none hover:text-accent/80"
       },
       size: {
-        sm: "h-9 px-4 text-sm",
-        md: "h-11 px-5 text-sm",
-        lg: "h-12 px-6 text-base"
+        sm: "h-[var(--ulib-size-control-sm)] px-[var(--ulib-space-control-x-sm)] text-[length:var(--ulib-size-text-sm)]",
+        md: "h-[var(--ulib-size-control-md)] px-[var(--ulib-space-control-x-md)] text-[length:var(--ulib-size-text-sm)]",
+        lg: "h-[var(--ulib-size-control-lg)] px-[var(--ulib-space-control-x-lg)] text-[length:var(--ulib-size-text-body)]"
       }
     },
     compoundVariants: [
@@ -71,4 +71,3 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = "Button";
-

@@ -16,6 +16,38 @@
     --ulib-color-success: 104 132 96;
     --ulib-color-warning: 179 129 58;
     --ulib-color-danger: 167 87 77;
+    --ulib-radius-panel: 32px;
+    --ulib-radius-overlay: 28px;
+    --ulib-radius-field: 22px;
+    --ulib-radius-pill: 999px;
+    --ulib-space-panel: 24px;
+    --ulib-space-panel-compact: 16px;
+    --ulib-space-stack: 16px;
+    --ulib-space-inline: 12px;
+    --ulib-space-control-x-sm: 12px;
+    --ulib-space-control-x-md: 16px;
+    --ulib-space-control-x-lg: 20px;
+    --ulib-space-control-y-sm: 8px;
+    --ulib-space-control-y-md: 10px;
+    --ulib-space-control-y-lg: 12px;
+    --ulib-space-badge-x: 12px;
+    --ulib-space-badge-y: 4px;
+    --ulib-size-control-sm: 40px;
+    --ulib-size-control-md: 44px;
+    --ulib-size-control-lg: 48px;
+    --ulib-size-text-xs: 12px;
+    --ulib-size-text-sm: 14px;
+    --ulib-size-text-body: 15px;
+    --ulib-size-text-lead: 18px;
+    --ulib-size-text-title: 27px;
+    --ulib-size-text-heading: 30px;
+    --ulib-size-text-subheading: 23px;
+    --ulib-size-text-display: 51px;
+    --ulib-size-text-dialog-title: 32px;
+    --ulib-size-text-quote: 19px;
+    --ulib-size-textarea-min-height: 144px;
+    --ulib-line-height-body: 1.7;
+    --ulib-content-max-width: 44rem;
     --ulib-font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
     --ulib-font-sans: "Segoe UI", "Inter", system-ui, sans-serif;
   }
@@ -37,7 +69,7 @@
     @apply bg-canvas text-text;
     margin: 0;
     min-height: 100vh;
-    line-height: 1.5;
+    line-height: var(--ulib-line-height-body);
     text-rendering: optimizeLegibility;
   }
 
@@ -53,4 +85,3 @@
     font: inherit;
   }
 }
-

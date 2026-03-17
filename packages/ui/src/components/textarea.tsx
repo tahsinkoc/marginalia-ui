@@ -15,11 +15,14 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     <textarea
       ref={ref}
       aria-invalid={invalid || undefined}
-      className={cn(fieldVariants({ size }), "min-h-[144px] resize-y leading-relaxed", className)}
+      className={cn(
+        fieldVariants({ size }),
+        "min-h-[var(--ulib-size-textarea-min-height)] resize-y leading-[var(--ulib-line-height-body)]",
+        className
+      )}
       {...props}
     />
   )
 );
 
 Textarea.displayName = "Textarea";
-

@@ -42,6 +42,8 @@ export {
   PaginationPrevious
 } from "./components/pagination";
 export type { PaginationLinkProps } from "./components/pagination";
+export { RichTextKicker, RichTextLead, RichTextMeta, RichTextQuote, RichTextSurface } from "./components/rich-text-surface";
+export type { RichTextSurfaceProps } from "./components/rich-text-surface";
 export { Skeleton } from "./components/skeleton";
 export { Stepper, StepperItem } from "./components/stepper";
 export type { StepperItemProps, StepperOrientation, StepperProps, StepStatus } from "./components/stepper";

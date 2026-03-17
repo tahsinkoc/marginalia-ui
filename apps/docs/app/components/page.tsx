@@ -31,6 +31,13 @@ import {
   Checkbox,
   Combobox,
   CommandPalette,
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuTrigger,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -49,8 +56,19 @@ import {
   EmptyStateFooter,
   EmptyStateIcon,
   EmptyStateTitle,
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
   Input,
   Label,
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarLabel,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
   Pagination,
   PaginationContent,
   PaginationEllipsis,
@@ -63,6 +81,11 @@ import {
   PopoverTrigger,
   Progress,
   RadioGroup,
+  RichTextKicker,
+  RichTextLead,
+  RichTextMeta,
+  RichTextQuote,
+  RichTextSurface,
   Select,
   Sheet,
   SheetContent,
@@ -152,6 +175,8 @@ const reviewRows = [
 
 export default function ComponentsPage() {
   const [menuChoice, setMenuChoice] = useState("Archive draft");
+  const [contextChoice, setContextChoice] = useState("Open research note");
+  const [menubarChoice, setMenubarChoice] = useState("Review outline");
   const [toastOpen, setToastOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [comboboxValue, setComboboxValue] = useState("editorial-review");
@@ -206,8 +231,8 @@ export default function ComponentsPage() {
       <TooltipProvider delayDuration={120}>
         <SectionIntro
           eyebrow="Component catalog"
-          title="Foundations, overlays, search, data views, and feedback in one calm visual language."
-          description="The system now covers form primitives, layered interactions, searchable controls, data display, and feedback surfaces without losing the warm editorial tone."
+          title="Foundations, overlays, navigation, editorial reading surfaces, and feedback in one calm visual language."
+          description="The system now covers form primitives, layered interactions, menus, searchable controls, data display, and long-form reading surfaces without losing the warm editorial tone."
         />
 
         <section className="showcase-grid">
@@ -516,6 +541,33 @@ export default function ComponentsPage() {
 
           <ShowcasePanel className="span-6">
             <div className="section-stack">
+              <div className="eyebrow">Hover card</div>
+              <HoverCard openDelay={120} closeDelay={90}>
+                <HoverCardTrigger asChild>
+                  <Button variant="link">Hover author profile</Button>
+                </HoverCardTrigger>
+                <HoverCardContent align="start">
+                  <div className="flex items-start gap-4">
+                    <Avatar className="h-14 w-14">
+                      <AvatarFallback>SC</AvatarFallback>
+                    </Avatar>
+                    <div className="grid gap-1.5">
+                      <Badge variant="accent">Contributor</Badge>
+                      <h3 style={{ fontFamily: "var(--font-editorial)", fontSize: "1.45rem", margin: 0 }}>
+                        Sofia Chen
+                      </h3>
+                      <p className="lead" style={{ fontSize: "0.96rem", margin: 0 }}>
+                        Writes interface notes that make dense product surfaces feel lighter, slower, and easier to trust.
+                      </p>
+                    </div>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
               <div className="eyebrow">Tabs</div>
               <Tabs defaultValue="principles">
                 <TabsList>
@@ -539,6 +591,84 @@ export default function ComponentsPage() {
                   </p>
                 </TabsContent>
               </Tabs>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
+              <div className="eyebrow">Context menu</div>
+              <ContextMenu>
+                <ContextMenuTrigger asChild>
+                  <Card className="cursor-context-menu border-dashed border-accent/35 bg-surfaceAlt/35">
+                    <CardHeader className="mb-0">
+                      <CardTitle style={{ fontSize: "1.4rem" }}>Right click this note</CardTitle>
+                      <CardDescription>
+                        Secondary actions stay attached to the reading surface instead of crowding the main layout.
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                </ContextMenuTrigger>
+                <ContextMenuContent>
+                  <ContextMenuLabel>Note actions</ContextMenuLabel>
+                  <ContextMenuItem onSelect={() => setContextChoice("Open research note")}>
+                    Open research note
+                    <ContextMenuShortcut>Enter</ContextMenuShortcut>
+                  </ContextMenuItem>
+                  <ContextMenuItem onSelect={() => setContextChoice("Duplicate annotation")}>
+                    Duplicate annotation
+                    <ContextMenuShortcut>Ctrl+D</ContextMenuShortcut>
+                  </ContextMenuItem>
+                  <ContextMenuSeparator />
+                  <ContextMenuItem destructive onSelect={() => setContextChoice("Remove note")}>
+                    Remove note
+                    <ContextMenuShortcut>Del</ContextMenuShortcut>
+                  </ContextMenuItem>
+                </ContextMenuContent>
+              </ContextMenu>
+              <p className="lead" style={{ fontSize: "1rem" }}>
+                Last action: <span className="mono-note">{contextChoice}</span>
+              </p>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-6">
+            <div className="section-stack">
+              <div className="eyebrow">Menubar</div>
+              <Menubar>
+                <MenubarMenu>
+                  <MenubarTrigger>Library</MenubarTrigger>
+                  <MenubarContent>
+                    <MenubarLabel>Browse</MenubarLabel>
+                    <MenubarItem onSelect={() => setMenubarChoice("Review outline")}>
+                      Review outline
+                      <MenubarShortcut>Ctrl+R</MenubarShortcut>
+                    </MenubarItem>
+                    <MenubarItem onSelect={() => setMenubarChoice("Open archive")}>
+                      Open archive
+                      <MenubarShortcut>Ctrl+A</MenubarShortcut>
+                    </MenubarItem>
+                  </MenubarContent>
+                </MenubarMenu>
+                <MenubarMenu>
+                  <MenubarTrigger>Compose</MenubarTrigger>
+                  <MenubarContent>
+                    <MenubarLabel>Writing</MenubarLabel>
+                    <MenubarItem onSelect={() => setMenubarChoice("New essay draft")}>
+                      New essay draft
+                    </MenubarItem>
+                    <MenubarItem onSelect={() => setMenubarChoice("Publish summary")}>
+                      Publish summary
+                    </MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem destructive onSelect={() => setMenubarChoice("Discard changes")}>
+                      Discard changes
+                    </MenubarItem>
+                  </MenubarContent>
+                </MenubarMenu>
+              </Menubar>
+              <p className="lead" style={{ fontSize: "1rem" }}>
+                Current selection: <span className="mono-note">{menubarChoice}</span>
+              </p>
             </div>
           </ShowcasePanel>
 
@@ -652,6 +782,37 @@ export default function ComponentsPage() {
               <p className="lead" style={{ fontSize: "1rem" }}>
                 Great for power actions, quick navigation, and searchable workflows without leaving the page.
               </p>
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-12">
+            <div className="section-stack">
+              <div className="eyebrow">Rich text surface</div>
+              <RichTextSurface>
+                <RichTextKicker>Editorial reading surface</RichTextKicker>
+                <h1>Long-form content without borrowing the feel of a CMS theme.</h1>
+                <RichTextLead>
+                  Rich Text Surface gives essays, release notes, case studies, and product commentary a warm frame that feels composed rather than generic.
+                </RichTextLead>
+                <RichTextQuote>
+                  When interface chrome gets quieter, the writing can carry more of the experience.
+                </RichTextQuote>
+                <h2>Why it belongs in the kit</h2>
+                <p>
+                  Product teams often build polished controls but leave longer reading surfaces to ad hoc markup. This component closes that gap with better defaults for hierarchy, spacing, and annotation-friendly rhythm.
+                </p>
+                <ul>
+                  <li>Use it for editorial landing pages, release notes, and dense documentation.</li>
+                  <li>Keep links readable with understated accents instead of loud color jumps.</li>
+                  <li>Highlight short inline details with tokens like <code>accentSoft</code> or <code>textMuted</code>.</li>
+                </ul>
+                <hr />
+                <RichTextMeta>
+                  <span>Reading time 4 min</span>
+                  <span>Updated Mar 17, 2026</span>
+                  <span>Surface tokens only</span>
+                </RichTextMeta>
+              </RichTextSurface>
             </div>
           </ShowcasePanel>
 

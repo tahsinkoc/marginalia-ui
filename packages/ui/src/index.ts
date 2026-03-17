@@ -47,6 +47,8 @@ export type {
 } from "./components/command-palette";
 export { DatePicker } from "./components/date-picker";
 export type { DatePickerProps } from "./components/date-picker";
+export { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuTrigger } from "./components/context-menu";
+export type { ContextMenuItemProps } from "./components/context-menu";
 export {
   Dialog,
   DialogClose,
@@ -67,6 +69,7 @@ export {
   EmptyStateIcon,
   EmptyStateTitle
 } from "./components/empty-state";
+export { HoverCard, HoverCardContent, HoverCardTrigger } from "./components/hover-card";
 export { Input } from "./components/input";
 export type { InputProps } from "./components/input";
 export { Label } from "./components/label";
@@ -82,6 +85,17 @@ export {
 export type { DropdownMenuItemProps } from "./components/dropdown-menu";
 export { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from "./components/popover";
 export {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarLabel,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger
+} from "./components/menubar";
+export type { MenubarItemProps } from "./components/menubar";
+export {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
@@ -95,6 +109,8 @@ export { Progress } from "./components/progress";
 export type { ProgressProps } from "./components/progress";
 export { RadioGroup, RadioItem } from "./components/radio";
 export type { RadioGroupProps, RadioItemProps, RadioOption } from "./components/radio";
+export { RichTextKicker, RichTextLead, RichTextMeta, RichTextQuote, RichTextSurface } from "./components/rich-text-surface";
+export type { RichTextSurfaceProps } from "./components/rich-text-surface";
 export { Select } from "./components/select";
 export type { SelectOption, SelectProps } from "./components/select";
 export {

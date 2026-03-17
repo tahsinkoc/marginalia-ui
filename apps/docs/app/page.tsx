@@ -68,7 +68,7 @@ export default function HomePage() {
                 Button, Input, Textarea, Label, Select, Checkbox, Radio, Switch, Card, Badge, Dialog,
                 Tooltip, Dropdown Menu, Tabs, Toast, Popover, Combobox, Command Palette, Date Picker,
                 Table, Pagination, Empty State, Accordion, Sheet, Stepper, Skeleton, Alert, Progress,
-                Breadcrumb, and Avatar.
+                Breadcrumb, Avatar, Hover Card, Context Menu, Menubar, and Rich Text Surface.
               </p>
             </div>
           </CardContent>
@@ -97,7 +97,7 @@ export default function HomePage() {
         <SectionIntro
           eyebrow="What ships in the package"
           title="Foundations first, then thoughtful overlays."
-          description="The API now covers form foundations, layered interactions, feedback surfaces, searchable workflows, data display, loading or progression patterns, and navigational identity details without breaking the same calm visual rhythm."
+          description="The API now covers form foundations, layered interactions, menus, editorial reading surfaces, searchable workflows, data display, loading or progression patterns, and navigational identity details without breaking the same calm visual rhythm."
         />
         <div className="showcase-grid">
           <ShowcasePanel className="span-8">

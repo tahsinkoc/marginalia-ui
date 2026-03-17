@@ -4,52 +4,52 @@
 
 @layer base {
   :root {
-    --ulib-color-canvas: 247 242 233;
-    --ulib-color-surface: 255 250 243;
-    --ulib-color-surface-alt: 239 231 218;
-    --ulib-color-border: 211 197 177;
-    --ulib-color-text: 59 47 38;
-    --ulib-color-text-muted: 123 108 92;
-    --ulib-color-accent: 157 112 78;
-    --ulib-color-accent-soft: 229 216 196;
-    --ulib-color-focus: 181 129 90;
-    --ulib-color-success: 104 132 96;
-    --ulib-color-warning: 179 129 58;
-    --ulib-color-danger: 167 87 77;
-    --ulib-radius-panel: 32px;
-    --ulib-radius-overlay: 28px;
-    --ulib-radius-field: 22px;
-    --ulib-radius-pill: 999px;
-    --ulib-space-panel: 24px;
-    --ulib-space-panel-compact: 16px;
-    --ulib-space-stack: 16px;
-    --ulib-space-inline: 12px;
-    --ulib-space-control-x-sm: 12px;
-    --ulib-space-control-x-md: 16px;
-    --ulib-space-control-x-lg: 20px;
-    --ulib-space-control-y-sm: 8px;
-    --ulib-space-control-y-md: 10px;
-    --ulib-space-control-y-lg: 12px;
-    --ulib-space-badge-x: 12px;
-    --ulib-space-badge-y: 4px;
-    --ulib-size-control-sm: 40px;
-    --ulib-size-control-md: 44px;
-    --ulib-size-control-lg: 48px;
-    --ulib-size-text-xs: 12px;
-    --ulib-size-text-sm: 14px;
-    --ulib-size-text-body: 15px;
-    --ulib-size-text-lead: 18px;
-    --ulib-size-text-title: 27px;
-    --ulib-size-text-heading: 30px;
-    --ulib-size-text-subheading: 23px;
-    --ulib-size-text-display: 51px;
-    --ulib-size-text-dialog-title: 32px;
-    --ulib-size-text-quote: 19px;
-    --ulib-size-textarea-min-height: 144px;
-    --ulib-line-height-body: 1.7;
-    --ulib-content-max-width: 44rem;
-    --ulib-font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-    --ulib-font-sans: "Segoe UI", "Inter", system-ui, sans-serif;
+    --marginalia-color-canvas: 247 242 233;
+    --marginalia-color-surface: 255 250 243;
+    --marginalia-color-surface-alt: 239 231 218;
+    --marginalia-color-border: 211 197 177;
+    --marginalia-color-text: 59 47 38;
+    --marginalia-color-text-muted: 123 108 92;
+    --marginalia-color-accent: 157 112 78;
+    --marginalia-color-accent-soft: 229 216 196;
+    --marginalia-color-focus: 181 129 90;
+    --marginalia-color-success: 104 132 96;
+    --marginalia-color-warning: 179 129 58;
+    --marginalia-color-danger: 167 87 77;
+    --marginalia-radius-panel: 32px;
+    --marginalia-radius-overlay: 28px;
+    --marginalia-radius-field: 22px;
+    --marginalia-radius-pill: 999px;
+    --marginalia-space-panel: 24px;
+    --marginalia-space-panel-compact: 16px;
+    --marginalia-space-stack: 16px;
+    --marginalia-space-inline: 12px;
+    --marginalia-space-control-x-sm: 12px;
+    --marginalia-space-control-x-md: 16px;
+    --marginalia-space-control-x-lg: 20px;
+    --marginalia-space-control-y-sm: 8px;
+    --marginalia-space-control-y-md: 10px;
+    --marginalia-space-control-y-lg: 12px;
+    --marginalia-space-badge-x: 12px;
+    --marginalia-space-badge-y: 4px;
+    --marginalia-size-control-sm: 40px;
+    --marginalia-size-control-md: 44px;
+    --marginalia-size-control-lg: 48px;
+    --marginalia-size-text-xs: 12px;
+    --marginalia-size-text-sm: 14px;
+    --marginalia-size-text-body: 15px;
+    --marginalia-size-text-lead: 18px;
+    --marginalia-size-text-title: 27px;
+    --marginalia-size-text-heading: 30px;
+    --marginalia-size-text-subheading: 23px;
+    --marginalia-size-text-display: 51px;
+    --marginalia-size-text-dialog-title: 32px;
+    --marginalia-size-text-quote: 19px;
+    --marginalia-size-textarea-min-height: 144px;
+    --marginalia-line-height-body: 1.7;
+    --marginalia-content-max-width: 44rem;
+    --marginalia-font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    --marginalia-font-sans: "Segoe UI", "Inter", system-ui, sans-serif;
   }
 
   *,
@@ -60,22 +60,22 @@
   }
 
   html {
-    background-color: rgb(var(--ulib-color-canvas));
-    color: rgb(var(--ulib-color-text));
-    font-family: var(--ulib-font-sans);
+    background-color: rgb(var(--marginalia-color-canvas));
+    color: rgb(var(--marginalia-color-text));
+    font-family: var(--marginalia-font-sans);
   }
 
   body {
     @apply bg-canvas text-text;
     margin: 0;
     min-height: 100vh;
-    line-height: var(--ulib-line-height-body);
+    line-height: var(--marginalia-line-height-body);
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background-color: rgb(var(--ulib-color-accent-soft));
-    color: rgb(var(--ulib-color-text));
+    background-color: rgb(var(--marginalia-color-accent-soft));
+    color: rgb(var(--marginalia-color-text));
   }
 
   button,
@@ -85,3 +85,4 @@
     font: inherit;
   }
 }
+

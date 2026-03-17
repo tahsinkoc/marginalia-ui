@@ -17,7 +17,7 @@ import {
   RichTextQuote,
   RichTextSurface,
   Textarea
-} from "@ulib/ui";
+} from "@marginalia/ui";
 
 type ColorKey =
   | "canvas"
@@ -58,18 +58,18 @@ type DensityPreset = {
 };
 
 const colorFields: Array<{ key: ColorKey; label: string; note: string; cssVar: string }> = [
-  { key: "canvas", label: "Canvas", note: "Page background tone", cssVar: "--ulib-color-canvas" },
-  { key: "surface", label: "Surface", note: "Primary card and panel fill", cssVar: "--ulib-color-surface" },
-  { key: "surfaceAlt", label: "Surface alt", note: "Secondary surface tone", cssVar: "--ulib-color-surface-alt" },
-  { key: "border", label: "Border", note: "Lines, separators, soft dividers", cssVar: "--ulib-color-border" },
-  { key: "text", label: "Text", note: "Primary reading color", cssVar: "--ulib-color-text" },
-  { key: "textMuted", label: "Muted text", note: "Descriptions and helper copy", cssVar: "--ulib-color-text-muted" },
-  { key: "accent", label: "Accent", note: "Buttons, links, highlights", cssVar: "--ulib-color-accent" },
-  { key: "accentSoft", label: "Accent soft", note: "Hover and selected fills", cssVar: "--ulib-color-accent-soft" },
-  { key: "focus", label: "Focus", note: "Keyboard ring color", cssVar: "--ulib-color-focus" },
-  { key: "success", label: "Success", note: "Positive feedback states", cssVar: "--ulib-color-success" },
-  { key: "warning", label: "Warning", note: "Cautionary surfaces", cssVar: "--ulib-color-warning" },
-  { key: "danger", label: "Danger", note: "Destructive actions", cssVar: "--ulib-color-danger" }
+  { key: "canvas", label: "Canvas", note: "Page background tone", cssVar: "--marginalia-color-canvas" },
+  { key: "surface", label: "Surface", note: "Primary card and panel fill", cssVar: "--marginalia-color-surface" },
+  { key: "surfaceAlt", label: "Surface alt", note: "Secondary surface tone", cssVar: "--marginalia-color-surface-alt" },
+  { key: "border", label: "Border", note: "Lines, separators, soft dividers", cssVar: "--marginalia-color-border" },
+  { key: "text", label: "Text", note: "Primary reading color", cssVar: "--marginalia-color-text" },
+  { key: "textMuted", label: "Muted text", note: "Descriptions and helper copy", cssVar: "--marginalia-color-text-muted" },
+  { key: "accent", label: "Accent", note: "Buttons, links, highlights", cssVar: "--marginalia-color-accent" },
+  { key: "accentSoft", label: "Accent soft", note: "Hover and selected fills", cssVar: "--marginalia-color-accent-soft" },
+  { key: "focus", label: "Focus", note: "Keyboard ring color", cssVar: "--marginalia-color-focus" },
+  { key: "success", label: "Success", note: "Positive feedback states", cssVar: "--marginalia-color-success" },
+  { key: "warning", label: "Warning", note: "Cautionary surfaces", cssVar: "--marginalia-color-warning" },
+  { key: "danger", label: "Danger", note: "Destructive actions", cssVar: "--marginalia-color-danger" }
 ];
 
 const themePresets: ThemePreset[] = [
@@ -210,38 +210,38 @@ const densityPresets: DensityPreset[] = [
 ];
 
 const metricOrder = [
-  "--ulib-radius-panel",
-  "--ulib-radius-overlay",
-  "--ulib-radius-field",
-  "--ulib-radius-pill",
-  "--ulib-space-panel",
-  "--ulib-space-panel-compact",
-  "--ulib-space-stack",
-  "--ulib-space-inline",
-  "--ulib-space-control-x-sm",
-  "--ulib-space-control-x-md",
-  "--ulib-space-control-x-lg",
-  "--ulib-space-control-y-sm",
-  "--ulib-space-control-y-md",
-  "--ulib-space-control-y-lg",
-  "--ulib-space-badge-x",
-  "--ulib-space-badge-y",
-  "--ulib-size-control-sm",
-  "--ulib-size-control-md",
-  "--ulib-size-control-lg",
-  "--ulib-size-text-xs",
-  "--ulib-size-text-sm",
-  "--ulib-size-text-body",
-  "--ulib-size-text-lead",
-  "--ulib-size-text-title",
-  "--ulib-size-text-heading",
-  "--ulib-size-text-subheading",
-  "--ulib-size-text-display",
-  "--ulib-size-text-dialog-title",
-  "--ulib-size-text-quote",
-  "--ulib-size-textarea-min-height",
-  "--ulib-line-height-body",
-  "--ulib-content-max-width"
+  "--marginalia-radius-panel",
+  "--marginalia-radius-overlay",
+  "--marginalia-radius-field",
+  "--marginalia-radius-pill",
+  "--marginalia-space-panel",
+  "--marginalia-space-panel-compact",
+  "--marginalia-space-stack",
+  "--marginalia-space-inline",
+  "--marginalia-space-control-x-sm",
+  "--marginalia-space-control-x-md",
+  "--marginalia-space-control-x-lg",
+  "--marginalia-space-control-y-sm",
+  "--marginalia-space-control-y-md",
+  "--marginalia-space-control-y-lg",
+  "--marginalia-space-badge-x",
+  "--marginalia-space-badge-y",
+  "--marginalia-size-control-sm",
+  "--marginalia-size-control-md",
+  "--marginalia-size-control-lg",
+  "--marginalia-size-text-xs",
+  "--marginalia-size-text-sm",
+  "--marginalia-size-text-body",
+  "--marginalia-size-text-lead",
+  "--marginalia-size-text-title",
+  "--marginalia-size-text-heading",
+  "--marginalia-size-text-subheading",
+  "--marginalia-size-text-display",
+  "--marginalia-size-text-dialog-title",
+  "--marginalia-size-text-quote",
+  "--marginalia-size-textarea-min-height",
+  "--marginalia-line-height-body",
+  "--marginalia-content-max-width"
 ] as const;
 
 const defaultColors = themePresets[0].colors;
@@ -282,10 +282,10 @@ export function ThemeBuilder() {
 
   const scaleSummary = React.useMemo(
     () => [
-      { name: "Body text", value: cssVars["--ulib-size-text-body"] },
-      { name: "Card padding", value: cssVars["--ulib-space-panel"] },
-      { name: "Button md height", value: cssVars["--ulib-size-control-md"] },
-      { name: "Reading width", value: cssVars["--ulib-content-max-width"] }
+      { name: "Body text", value: cssVars["--marginalia-size-text-body"] },
+      { name: "Card padding", value: cssVars["--marginalia-space-panel"] },
+      { name: "Button md height", value: cssVars["--marginalia-size-control-md"] },
+      { name: "Reading width", value: cssVars["--marginalia-content-max-width"] }
     ],
     [cssVars]
   );
@@ -443,7 +443,7 @@ export function ThemeBuilder() {
           <CardHeader>
             <CardTitle>Export CSS tokens</CardTitle>
             <CardDescription>
-              Copy the generated `:root` block, then paste it either into your consumer app&apos;s `app/globals.css` or into ULib&apos;s own `packages/ui/src/styles/theme.css`.
+              Copy the generated `:root` block, then paste it either into your consumer app&apos;s `app/globals.css` or into Marginalia&apos;s own `packages/ui/src/styles/theme.css`.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -454,7 +454,7 @@ export function ThemeBuilder() {
                   ? "Copied to clipboard."
                   : copyState === "failed"
                     ? "Clipboard copy failed. You can still copy from the code block."
-                    : "Consumer apps should keep importing @ulib/ui/styles.css once in the app shell."}
+                    : "Consumer apps should keep importing @marginalia/ui/styles.css once in the app shell."}
               </span>
             </div>
             <pre className="code-block">{exportSnippet}</pre>
@@ -466,7 +466,7 @@ export function ThemeBuilder() {
               <div className="token-card">
                 <div className="token-name">Paste in a Next app</div>
                 <div className="theme-field-note">
-                  Keep `import "@ulib/ui/styles.css"` in `app/layout.tsx`, then paste the snippet into `app/globals.css`.
+                  Keep `import "@marginalia/ui/styles.css"` in `app/layout.tsx`, then paste the snippet into `app/globals.css`.
                 </div>
               </div>
             </div>
@@ -477,7 +477,7 @@ export function ThemeBuilder() {
           <CardHeader>
             <CardTitle>Live preview</CardTitle>
             <CardDescription>
-              The preview below applies your token overrides directly to ULib components, so you can feel spacing and type changes before exporting.
+              The preview below applies your token overrides directly to Marginalia components, so you can feel spacing and type changes before exporting.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -495,7 +495,7 @@ export function ThemeBuilder() {
                     <CardContent>
                       <div className="section-stack" style={{ gap: "0.7rem" }}>
                         <Label htmlFor="theme-builder-email">Project name</Label>
-                        <Input id="theme-builder-email" value="ULib Theme Builder" readOnly />
+                        <Input id="theme-builder-email" value="Marginalia Theme Builder" readOnly />
                       </div>
                       <div className="section-stack" style={{ gap: "0.7rem" }}>
                         <Label htmlFor="theme-builder-notes">Editorial notes</Label>
@@ -618,38 +618,38 @@ function RangeField({
 
 function buildCssVariables(colors: ThemeColors, settings: ScaleSettings) {
   const metrics: Record<(typeof metricOrder)[number], string> = {
-    "--ulib-radius-panel": px(32 * settings.radiusScale),
-    "--ulib-radius-overlay": px(28 * settings.radiusScale),
-    "--ulib-radius-field": px(22 * settings.radiusScale),
-    "--ulib-radius-pill": "999px",
-    "--ulib-space-panel": px(24 * settings.spaceScale),
-    "--ulib-space-panel-compact": px(16 * settings.spaceScale),
-    "--ulib-space-stack": px(16 * settings.spaceScale),
-    "--ulib-space-inline": px(12 * settings.spaceScale),
-    "--ulib-space-control-x-sm": px(12 * settings.spaceScale),
-    "--ulib-space-control-x-md": px(16 * settings.spaceScale),
-    "--ulib-space-control-x-lg": px(20 * settings.spaceScale),
-    "--ulib-space-control-y-sm": px(8 * settings.spaceScale),
-    "--ulib-space-control-y-md": px(10 * settings.spaceScale),
-    "--ulib-space-control-y-lg": px(12 * settings.spaceScale),
-    "--ulib-space-badge-x": px(12 * settings.spaceScale),
-    "--ulib-space-badge-y": px(4 * settings.spaceScale),
-    "--ulib-size-control-sm": px(40 * settings.controlScale),
-    "--ulib-size-control-md": px(44 * settings.controlScale),
-    "--ulib-size-control-lg": px(48 * settings.controlScale),
-    "--ulib-size-text-xs": px(12 * settings.fontScale),
-    "--ulib-size-text-sm": px(14 * settings.fontScale),
-    "--ulib-size-text-body": px(15 * settings.fontScale),
-    "--ulib-size-text-lead": px(18 * settings.fontScale),
-    "--ulib-size-text-title": px(27 * settings.fontScale),
-    "--ulib-size-text-heading": px(30 * settings.fontScale),
-    "--ulib-size-text-subheading": px(23 * settings.fontScale),
-    "--ulib-size-text-display": px(51 * settings.fontScale),
-    "--ulib-size-text-dialog-title": px(32 * settings.fontScale),
-    "--ulib-size-text-quote": px(19 * settings.fontScale),
-    "--ulib-size-textarea-min-height": px(144 * settings.spaceScale),
-    "--ulib-line-height-body": "1.7",
-    "--ulib-content-max-width": rem(settings.contentWidth)
+    "--marginalia-radius-panel": px(32 * settings.radiusScale),
+    "--marginalia-radius-overlay": px(28 * settings.radiusScale),
+    "--marginalia-radius-field": px(22 * settings.radiusScale),
+    "--marginalia-radius-pill": "999px",
+    "--marginalia-space-panel": px(24 * settings.spaceScale),
+    "--marginalia-space-panel-compact": px(16 * settings.spaceScale),
+    "--marginalia-space-stack": px(16 * settings.spaceScale),
+    "--marginalia-space-inline": px(12 * settings.spaceScale),
+    "--marginalia-space-control-x-sm": px(12 * settings.spaceScale),
+    "--marginalia-space-control-x-md": px(16 * settings.spaceScale),
+    "--marginalia-space-control-x-lg": px(20 * settings.spaceScale),
+    "--marginalia-space-control-y-sm": px(8 * settings.spaceScale),
+    "--marginalia-space-control-y-md": px(10 * settings.spaceScale),
+    "--marginalia-space-control-y-lg": px(12 * settings.spaceScale),
+    "--marginalia-space-badge-x": px(12 * settings.spaceScale),
+    "--marginalia-space-badge-y": px(4 * settings.spaceScale),
+    "--marginalia-size-control-sm": px(40 * settings.controlScale),
+    "--marginalia-size-control-md": px(44 * settings.controlScale),
+    "--marginalia-size-control-lg": px(48 * settings.controlScale),
+    "--marginalia-size-text-xs": px(12 * settings.fontScale),
+    "--marginalia-size-text-sm": px(14 * settings.fontScale),
+    "--marginalia-size-text-body": px(15 * settings.fontScale),
+    "--marginalia-size-text-lead": px(18 * settings.fontScale),
+    "--marginalia-size-text-title": px(27 * settings.fontScale),
+    "--marginalia-size-text-heading": px(30 * settings.fontScale),
+    "--marginalia-size-text-subheading": px(23 * settings.fontScale),
+    "--marginalia-size-text-display": px(51 * settings.fontScale),
+    "--marginalia-size-text-dialog-title": px(32 * settings.fontScale),
+    "--marginalia-size-text-quote": px(19 * settings.fontScale),
+    "--marginalia-size-textarea-min-height": px(144 * settings.spaceScale),
+    "--marginalia-line-height-body": "1.7",
+    "--marginalia-content-max-width": rem(settings.contentWidth)
   };
 
   const colorVars = Object.fromEntries(
@@ -690,3 +690,4 @@ function rem(value: number) {
 function trimNumber(value: number) {
   return Number.parseFloat(value.toFixed(2)).toString();
 }
+

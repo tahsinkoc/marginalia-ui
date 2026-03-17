@@ -17,7 +17,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       aria-invalid={invalid || undefined}
       className={cn(
         fieldVariants({ size }),
-        "min-h-[var(--ulib-size-textarea-min-height)] resize-y leading-[var(--ulib-line-height-body)]",
+        "min-h-[var(--marginalia-size-textarea-min-height)] resize-y leading-[var(--marginalia-line-height-body)]",
         className
       )}
       {...props}
@@ -26,3 +26,4 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 );
 
 Textarea.displayName = "Textarea";
+

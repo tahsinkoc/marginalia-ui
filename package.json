@@ -1,5 +1,5 @@
 {
-  "name": "ulib-workspace",
+  "name": "marginalia-workspace",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
@@ -7,9 +7,9 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "npm run build --workspace @ulib/ui && npm run build --workspace @ulib/docs",
-    "dev": "npm run build --workspace @ulib/ui && concurrently -n ui,docs -c auto \"npm run dev --workspace @ulib/ui\" \"npm run dev --workspace @ulib/docs\"",
-    "test": "npm run test --workspace @ulib/ui"
+    "build": "npm run build --workspace @marginalia/ui && npm run build --workspace @marginalia/docs",
+    "dev": "npm run build --workspace @marginalia/ui && concurrently -n ui,docs -c auto \"npm run dev --workspace @marginalia/ui\" \"npm run dev --workspace @marginalia/docs\"",
+    "test": "npm run test --workspace @marginalia/ui"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
@@ -20,4 +20,5 @@
     "node": ">=20"
   }
 }
+
 

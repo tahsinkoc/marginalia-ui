@@ -8,11 +8,11 @@ describe("Form fields", () => {
     render(
       <div>
         <Label htmlFor="email">Email address</Label>
-        <Input id="email" placeholder="editorial@ulib.dev" />
+        <Input id="email" placeholder="editorial@marginalia.dev" />
       </div>
     );
 
-    expect(screen.getByLabelText(/email address/i)).toHaveAttribute("placeholder", "editorial@ulib.dev");
+    expect(screen.getByLabelText(/email address/i)).toHaveAttribute("placeholder", "editorial@marginalia.dev");
   });
 
   it("supports size variants and invalid textareas", () => {
@@ -22,8 +22,9 @@ describe("Form fields", () => {
 
     expect(textarea).toHaveAttribute("aria-invalid", "true");
     expect(textarea).toHaveClass(
-      "px-[var(--ulib-space-control-x-lg)]",
-      "text-[length:var(--ulib-size-text-body)]"
+      "px-[var(--marginalia-space-control-x-lg)]",
+      "text-[length:var(--marginalia-size-text-body)]"
     );
   });
 });
+

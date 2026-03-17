@@ -12,7 +12,7 @@ body {
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 34%),
     radial-gradient(circle at top right, rgba(229, 216, 196, 0.55), transparent 28%),
     linear-gradient(180deg, rgba(247, 242, 233, 0.96) 0%, rgba(244, 238, 229, 0.98) 50%, rgba(239, 232, 221, 1) 100%);
-  color: rgb(var(--ulib-color-text));
+  color: rgb(var(--marginalia-color-text));
 }
 
 body::before {
@@ -65,7 +65,7 @@ a {
 }
 
 .brand-note {
-  color: rgb(var(--ulib-color-text-muted));
+  color: rgb(var(--marginalia-color-text-muted));
   font-size: 0.88rem;
   line-height: 1.5;
   max-width: 28rem;
@@ -105,7 +105,7 @@ a {
 }
 
 .eyebrow {
-  color: rgb(var(--ulib-color-accent));
+  color: rgb(var(--marginalia-color-accent));
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.22em;
@@ -127,7 +127,7 @@ a {
 }
 
 .lead {
-  color: rgb(var(--ulib-color-text-muted));
+  color: rgb(var(--marginalia-color-text-muted));
   font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   line-height: 1.8;
   margin: 0;
@@ -143,7 +143,7 @@ a {
 }
 
 .hero-note {
-  color: rgb(var(--ulib-color-text-muted));
+  color: rgb(var(--marginalia-color-text-muted));
   font-size: 0.95rem;
   margin-top: 1rem;
 }
@@ -182,7 +182,7 @@ a {
 }
 
 .showcase-panel {
-  border: 1px solid rgba(var(--ulib-color-border), 0.9);
+  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
   border-radius: 32px;
   background: rgba(255, 250, 243, 0.74);
   box-shadow: 0 20px 50px -34px rgba(90, 66, 43, 0.3);
@@ -212,7 +212,7 @@ a {
 .token-card {
   display: grid;
   gap: 0.9rem;
-  border: 1px solid rgba(var(--ulib-color-border), 0.9);
+  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
   border-radius: 26px;
   background: rgba(255, 250, 243, 0.82);
   padding: 1rem;
@@ -231,24 +231,24 @@ a {
 
 .token-value,
 .mono-note {
-  color: rgb(var(--ulib-color-text-muted));
+  color: rgb(var(--marginalia-color-text-muted));
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
   font-size: 0.88rem;
 }
 
 .footer-note {
-  color: rgb(var(--ulib-color-text-muted));
+  color: rgb(var(--marginalia-color-text-muted));
   font-size: 0.92rem;
   padding-bottom: 2.5rem;
 }
 
 pre.code-block {
   overflow-x: auto;
-  border: 1px solid rgba(var(--ulib-color-border), 0.9);
+  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
   border-radius: 28px;
   background: rgba(255, 250, 243, 0.82);
   padding: 1.25rem;
-  color: rgb(var(--ulib-color-text));
+  color: rgb(var(--marginalia-color-text));
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
   font-size: 0.92rem;
   line-height: 1.7;
@@ -280,11 +280,11 @@ pre.code-block {
   display: grid;
   gap: 0.35rem;
   min-width: 11rem;
-  border: 1px solid rgba(var(--ulib-color-border), 0.9);
+  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
   border-radius: 22px;
   background: rgba(255, 250, 243, 0.76);
   padding: 0.9rem 1rem;
-  color: rgb(var(--ulib-color-text));
+  color: rgb(var(--marginalia-color-text));
   cursor: pointer;
   text-align: left;
   transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
@@ -292,13 +292,13 @@ pre.code-block {
 
 .theme-preset-button:hover {
   transform: translateY(-1px);
-  border-color: rgba(var(--ulib-color-accent), 0.36);
-  background: rgba(var(--ulib-color-accent-soft), 0.65);
+  border-color: rgba(var(--marginalia-color-accent), 0.36);
+  background: rgba(var(--marginalia-color-accent-soft), 0.65);
 }
 
 .theme-preset-button.is-active {
-  border-color: rgba(var(--ulib-color-accent), 0.52);
-  background: rgba(var(--ulib-color-accent-soft), 0.9);
+  border-color: rgba(var(--marginalia-color-accent), 0.52);
+  background: rgba(var(--marginalia-color-accent-soft), 0.9);
 }
 
 .theme-control-grid,
@@ -312,7 +312,7 @@ pre.code-block {
 .theme-range-field {
   display: grid;
   gap: 0.65rem;
-  border: 1px solid rgba(var(--ulib-color-border), 0.85);
+  border: 1px solid rgba(var(--marginalia-color-border), 0.85);
   border-radius: 22px;
   background: rgba(255, 250, 243, 0.66);
   padding: 0.9rem 1rem;
@@ -341,17 +341,17 @@ pre.code-block {
 }
 
 .theme-color-input::-webkit-color-swatch {
-  border: 1px solid rgba(var(--ulib-color-border), 0.8);
+  border: 1px solid rgba(var(--marginalia-color-border), 0.8);
   border-radius: 999px;
 }
 
 .theme-color-input::-moz-color-swatch {
-  border: 1px solid rgba(var(--ulib-color-border), 0.8);
+  border: 1px solid rgba(var(--marginalia-color-border), 0.8);
   border-radius: 999px;
 }
 
 .theme-field-note {
-  color: rgb(var(--ulib-color-text-muted));
+  color: rgb(var(--marginalia-color-text-muted));
   font-size: 0.86rem;
   line-height: 1.55;
 }
@@ -359,22 +359,22 @@ pre.code-block {
 .theme-range-value,
 .theme-export-note,
 .theme-preview-note {
-  color: rgb(var(--ulib-color-text-muted));
+  color: rgb(var(--marginalia-color-text-muted));
   font-size: 0.9rem;
 }
 
 .theme-range-input {
   width: 100%;
-  accent-color: rgb(var(--ulib-color-accent));
+  accent-color: rgb(var(--marginalia-color-accent));
 }
 
 .theme-preview-shell {
-  border: 1px solid rgba(var(--ulib-color-border), 0.9);
+  border: 1px solid rgba(var(--marginalia-color-border), 0.9);
   border-radius: 32px;
   background: linear-gradient(
     180deg,
-    rgba(var(--ulib-color-surface), 0.98) 0%,
-    rgba(var(--ulib-color-surface-alt), 0.72) 100%
+    rgba(var(--marginalia-color-surface), 0.98) 0%,
+    rgba(var(--marginalia-color-surface-alt), 0.72) 100%
   );
   padding: 1rem;
 }
@@ -383,7 +383,7 @@ pre.code-block {
   border-radius: 28px;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 32%),
-    linear-gradient(180deg, rgba(var(--ulib-color-canvas), 0.98) 0%, rgba(var(--ulib-color-surface-alt), 0.58) 100%);
+    linear-gradient(180deg, rgba(var(--marginalia-color-canvas), 0.98) 0%, rgba(var(--marginalia-color-surface-alt), 0.58) 100%);
   padding: 1rem;
 }
 
@@ -448,4 +448,53 @@ pre.code-block {
   .section-title {
     font-size: clamp(2rem, 10vw, 2.7rem);
   }
+}
+
+/* Paste into app/globals.css or replace the :root block in packages/ui/src/styles/theme.css */
+/* Paste into app/globals.css or replace the :root block in packages/ui/src/styles/theme.css */
+:root {
+  --marginalia-color-canvas: 247 242 233;
+  --marginalia-color-surface: 255 250 243;
+  --marginalia-color-surface-alt: 239 231 218;
+  --marginalia-color-border: 211 197 177;
+  --marginalia-color-text: 59 47 38;
+  --marginalia-color-text-muted: 123 108 92;
+  --marginalia-color-accent: 157 112 78;
+  --marginalia-color-accent-soft: 229 216 196;
+  --marginalia-color-focus: 181 129 90;
+  --marginalia-color-success: 104 132 96;
+  --marginalia-color-warning: 179 129 58;
+  --marginalia-color-danger: 167 87 77;
+  --marginalia-radius-panel: 30.08px;
+  --marginalia-radius-overlay: 26.32px;
+  --marginalia-radius-field: 20.68px;
+  --marginalia-radius-pill: 999px;
+  --marginalia-space-panel: 20.64px;
+  --marginalia-space-panel-compact: 13.76px;
+  --marginalia-space-stack: 13.76px;
+  --marginalia-space-inline: 10.32px;
+  --marginalia-space-control-x-sm: 10.32px;
+  --marginalia-space-control-x-md: 13.76px;
+  --marginalia-space-control-x-lg: 17.2px;
+  --marginalia-space-control-y-sm: 6.88px;
+  --marginalia-space-control-y-md: 8.6px;
+  --marginalia-space-control-y-lg: 10.32px;
+  --marginalia-space-badge-x: 10.32px;
+  --marginalia-space-badge-y: 3.44px;
+  --marginalia-size-control-sm: 36.8px;
+  --marginalia-size-control-md: 40.48px;
+  --marginalia-size-control-lg: 44.16px;
+  --marginalia-size-text-xs: 11.04px;
+  --marginalia-size-text-sm: 12.88px;
+  --marginalia-size-text-body: 13.8px;
+  --marginalia-size-text-lead: 16.56px;
+  --marginalia-size-text-title: 24.84px;
+  --marginalia-size-text-heading: 27.6px;
+  --marginalia-size-text-subheading: 21.16px;
+  --marginalia-size-text-display: 46.92px;
+  --marginalia-size-text-dialog-title: 29.44px;
+  --marginalia-size-text-quote: 17.48px;
+  --marginalia-size-textarea-min-height: 123.84px;
+  --marginalia-line-height-body: 1.7;
+  --marginalia-content-max-width: 40rem;
 }

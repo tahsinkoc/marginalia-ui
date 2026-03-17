@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Newsreader } from "next/font/google";
 
-import "@ulib/ui/styles.css";
+import "@marginalia/ui/styles.css";
 import "./globals.css";
 import { DocsNav } from "../components/docs-nav";
 
@@ -18,8 +18,8 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "ULib",
-  description: "Academic and elegant React UI kit for the Next.js ecosystem, shaped by the Marginalia theme."
+  title: "Marginalia",
+  description: "Marginalia is an academic and elegant React UI kit for the Next.js ecosystem."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -30,11 +30,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <DocsNav />
           <main className="page-stack">{children}</main>
           <footer className="footer-note">
-            Built for calm interfaces, editorial rhythm, and thoughtful defaults in React + Next.js. Theme:
-            Marginalia.
+            Marginalia is built for calm interfaces, editorial rhythm, and thoughtful defaults in React + Next.js.
           </footer>
         </div>
       </body>
     </html>
   );
 }
+

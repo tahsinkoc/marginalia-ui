@@ -4,18 +4,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        canvas: "rgb(var(--ulib-color-canvas) / <alpha-value>)",
-        surface: "rgb(var(--ulib-color-surface) / <alpha-value>)",
-        surfaceAlt: "rgb(var(--ulib-color-surface-alt) / <alpha-value>)",
-        border: "rgb(var(--ulib-color-border) / <alpha-value>)",
-        text: "rgb(var(--ulib-color-text) / <alpha-value>)",
-        textMuted: "rgb(var(--ulib-color-text-muted) / <alpha-value>)",
-        accent: "rgb(var(--ulib-color-accent) / <alpha-value>)",
-        accentSoft: "rgb(var(--ulib-color-accent-soft) / <alpha-value>)",
-        focus: "rgb(var(--ulib-color-focus) / <alpha-value>)",
-        success: "rgb(var(--ulib-color-success) / <alpha-value>)",
-        warning: "rgb(var(--ulib-color-warning) / <alpha-value>)",
-        danger: "rgb(var(--ulib-color-danger) / <alpha-value>)"
+        canvas: "rgb(var(--marginalia-color-canvas) / <alpha-value>)",
+        surface: "rgb(var(--marginalia-color-surface) / <alpha-value>)",
+        surfaceAlt: "rgb(var(--marginalia-color-surface-alt) / <alpha-value>)",
+        border: "rgb(var(--marginalia-color-border) / <alpha-value>)",
+        text: "rgb(var(--marginalia-color-text) / <alpha-value>)",
+        textMuted: "rgb(var(--marginalia-color-text-muted) / <alpha-value>)",
+        accent: "rgb(var(--marginalia-color-accent) / <alpha-value>)",
+        accentSoft: "rgb(var(--marginalia-color-accent-soft) / <alpha-value>)",
+        focus: "rgb(var(--marginalia-color-focus) / <alpha-value>)",
+        success: "rgb(var(--marginalia-color-success) / <alpha-value>)",
+        warning: "rgb(var(--marginalia-color-warning) / <alpha-value>)",
+        danger: "rgb(var(--marginalia-color-danger) / <alpha-value>)"
       },
       boxShadow: {
         panel: "0 22px 45px -30px rgba(88, 64, 42, 0.35), 0 12px 24px -18px rgba(120, 91, 63, 0.2)",
@@ -121,8 +121,8 @@ module.exports = {
         shimmer: "shimmer 1.8s ease-in-out infinite"
       },
       fontFamily: {
-        serif: ["var(--ulib-font-serif)", "Georgia", "serif"],
-        sans: ["var(--ulib-font-sans)", "ui-sans-serif", "system-ui", "sans-serif"]
+        serif: ["var(--marginalia-font-serif)", "Georgia", "serif"],
+        sans: ["var(--marginalia-font-sans)", "ui-sans-serif", "system-ui", "sans-serif"]
       },
       letterSpacing: {
         elegant: "0.015em"
@@ -130,3 +130,4 @@ module.exports = {
     }
   }
 };
+

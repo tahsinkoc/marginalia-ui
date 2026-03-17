@@ -40,7 +40,7 @@ export const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-1/2 top-1/2 z-50 grid w-[min(92vw,40rem)] -translate-x-1/2 -translate-y-1/2 gap-[var(--ulib-space-panel-compact)] rounded-[var(--ulib-radius-overlay)] border bg-surface p-[var(--ulib-space-panel)] shadow-panel will-change-[transform,opacity] data-[state=closed]:animate-dialog-out data-[state=open]:animate-dialog-in motion-reduce:data-[state=closed]:animate-none motion-reduce:data-[state=open]:animate-none",
+        "fixed left-1/2 top-1/2 z-50 grid w-[min(92vw,40rem)] -translate-x-1/2 -translate-y-1/2 gap-[var(--marginalia-space-panel-compact)] rounded-[var(--marginalia-radius-overlay)] border bg-surface p-[var(--marginalia-space-panel)] shadow-panel will-change-[transform,opacity] data-[state=closed]:animate-dialog-out data-[state=open]:animate-dialog-in motion-reduce:data-[state=closed]:animate-none motion-reduce:data-[state=open]:animate-none",
         className
       )}
       {...props}
@@ -49,7 +49,7 @@ export const DialogContent = React.forwardRef<
       {hideClose ? null : (
         <DialogPrimitive.Close
           aria-label="Close dialog"
-          className="absolute right-4 top-4 inline-flex h-[var(--ulib-size-control-sm)] w-[var(--ulib-size-control-sm)] items-center justify-center rounded-[var(--ulib-radius-pill)] border bg-surfaceAlt text-textMuted transition hover:border-accent/30 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus/40 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+          className="absolute right-4 top-4 inline-flex h-[var(--marginalia-size-control-sm)] w-[var(--marginalia-size-control-sm)] items-center justify-center rounded-[var(--marginalia-radius-pill)] border bg-surfaceAlt text-textMuted transition hover:border-accent/30 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus/40 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
         >
           <CloseIcon className="h-4 w-4" />
         </DialogPrimitive.Close>
@@ -73,7 +73,7 @@ export const DialogFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("flex flex-wrap items-center justify-end gap-[var(--ulib-space-inline)]", className)} {...props} />
+  <div className={cn("flex flex-wrap items-center justify-end gap-[var(--marginalia-space-inline)]", className)} {...props} />
 );
 
 DialogFooter.displayName = "DialogFooter";
@@ -84,7 +84,7 @@ export const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn("font-serif text-[length:var(--ulib-size-text-dialog-title)] leading-tight tracking-[-0.03em] text-text", className)}
+    className={cn("font-serif text-[length:var(--marginalia-size-text-dialog-title)] leading-tight tracking-[-0.03em] text-text", className)}
     {...props}
   />
 ));
@@ -97,7 +97,7 @@ export const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-[length:var(--ulib-size-text-sm)] leading-relaxed text-textMuted", className)}
+    className={cn("text-[length:var(--marginalia-size-text-sm)] leading-relaxed text-textMuted", className)}
     {...props}
   />
 ));
@@ -118,3 +118,4 @@ function CloseIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+

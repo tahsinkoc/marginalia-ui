@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, buttonVariants } from "@ulib/ui";
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, buttonVariants } from "@marginalia/ui";
 
 import { SectionIntro, ShowcasePanel } from "../components/docs-section";
 
@@ -23,11 +23,11 @@ export default function HomePage() {
     <>
       <section className="hero-grid">
         <div className="section-stack">
-          <Badge variant="accent">Marginalia theme</Badge>
+          <Badge variant="accent">Marginalia UI</Badge>
           <div className="eyebrow">React + Next.js UI library</div>
           <h1 className="hero-title">Thoughtful components with an editorial, elegant cadence.</h1>
           <p className="lead">
-            ULib begins with the everyday pieces you reach for first, then gives them a cohesive academic
+            Marginalia begins with the everyday pieces you reach for first, then gives them a cohesive academic
             character inspired by warm paper, quiet contrast, and deliberate spacing.
           </p>
           <div className="hero-actions">
@@ -122,3 +122,4 @@ export default function HomePage() {
     </>
   );
 }
+

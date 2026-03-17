@@ -22,7 +22,8 @@ describe("Button", () => {
 
     expect(screen.getByRole("button", { name: /review draft/i })).toHaveClass(
       "border-border",
-      "h-[var(--ulib-size-control-lg)]"
+      "h-[var(--marginalia-size-control-lg)]"
     );
   });
 });
+

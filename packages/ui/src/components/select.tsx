@@ -44,7 +44,7 @@ export function Select({
   return (
     <div className="grid gap-2">
       {label ? (
-        <div id={labelId} className="text-[length:var(--ulib-size-text-sm)] font-medium tracking-elegant text-text">
+        <div id={labelId} className="text-[length:var(--marginalia-size-text-sm)] font-medium tracking-elegant text-text">
           {label}
         </div>
       ) : null}
@@ -71,7 +71,7 @@ export function Select({
             position="popper"
             sideOffset={10}
             className={cn(
-              "z-50 overflow-hidden rounded-[var(--ulib-radius-overlay)] border bg-surface p-2 text-text shadow-panel",
+              "z-50 overflow-hidden rounded-[var(--marginalia-radius-overlay)] border bg-surface p-2 text-text shadow-panel",
               contentClassName
             )}
           >
@@ -81,7 +81,7 @@ export function Select({
                   key={option.value}
                   value={option.value}
                   disabled={option.disabled}
-                  className="relative flex cursor-default select-none rounded-[var(--ulib-radius-field)] px-10 py-3 text-[length:var(--ulib-size-text-sm)] outline-none transition duration-150 data-[disabled]:pointer-events-none data-[disabled]:opacity-40 data-[highlighted]:bg-accentSoft"
+                  className="relative flex cursor-default select-none rounded-[var(--marginalia-radius-field)] px-10 py-3 text-[length:var(--marginalia-size-text-sm)] outline-none transition duration-150 data-[disabled]:pointer-events-none data-[disabled]:opacity-40 data-[highlighted]:bg-accentSoft"
                 >
                   <span className="absolute left-3 top-3.5 flex h-4 w-4 items-center justify-center text-accent">
                     <SelectPrimitive.ItemIndicator>
@@ -91,7 +91,7 @@ export function Select({
                   <span className="grid gap-1">
                     <SelectPrimitive.ItemText>{option.label}</SelectPrimitive.ItemText>
                     {option.description ? (
-                      <span className="text-[length:var(--ulib-size-text-xs)] leading-relaxed text-textMuted">{option.description}</span>
+                      <span className="text-[length:var(--marginalia-size-text-xs)] leading-relaxed text-textMuted">{option.description}</span>
                     ) : null}
                   </span>
                 </SelectPrimitive.Item>
@@ -101,7 +101,7 @@ export function Select({
         </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
       {description ? (
-        <p id={descriptionId} className="text-[length:var(--ulib-size-text-sm)] leading-relaxed text-textMuted">
+        <p id={descriptionId} className="text-[length:var(--marginalia-size-text-sm)] leading-relaxed text-textMuted">
           {description}
         </p>
       ) : null}
@@ -138,3 +138,4 @@ function CheckIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+

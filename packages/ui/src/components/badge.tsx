@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/cn";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-[var(--ulib-radius-pill)] border px-[var(--ulib-space-badge-x)] py-[var(--ulib-space-badge-y)] text-[length:var(--ulib-size-text-xs)] font-semibold uppercase tracking-[0.18em]",
+  "inline-flex items-center rounded-[var(--marginalia-radius-pill)] border px-[var(--marginalia-space-badge-x)] py-[var(--marginalia-space-badge-y)] text-[length:var(--marginalia-size-text-xs)] font-semibold uppercase tracking-[0.18em]",
   {
     variants: {
       variant: {
@@ -33,3 +33,4 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 );
 
 Badge.displayName = "Badge";
+

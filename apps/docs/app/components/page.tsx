@@ -121,7 +121,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
-} from "@ulib/ui";
+} from "@marginalia/ui";
 
 import { SectionIntro, ShowcasePanel } from "../../components/docs-section";
 
@@ -308,7 +308,7 @@ export default function ComponentsPage() {
               <div className="section-stack">
                 <div className="section-stack" style={{ gap: "0.65rem" }}>
                   <Label htmlFor="catalog-email">Email address</Label>
-                  <Input id="catalog-email" placeholder="editorial@ulib.dev" />
+                  <Input id="catalog-email" placeholder="editorial@marginalia.dev" />
                 </div>
                 <div className="section-stack" style={{ gap: "0.65rem" }}>
                   <Label htmlFor="catalog-notes">Notes</Label>
@@ -949,3 +949,4 @@ function ArchiveIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+

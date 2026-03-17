@@ -21,6 +21,8 @@ export {
   CardTitle
 } from "./components/card";
 export type { CardProps } from "./components/card";
+export { CodeViewer } from "./components/code-viewer";
+export type { CodeViewerProps } from "./components/code-viewer";
 export {
   EmptyState,
   EmptyStateDescription,

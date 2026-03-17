@@ -29,6 +29,8 @@ export { Calendar } from "./components/calendar";
 export type { CalendarProps } from "./components/calendar";
 export { Combobox } from "./components/combobox";
 export type { ComboboxOption, ComboboxProps } from "./components/combobox";
+export { CodeViewer } from "./components/code-viewer";
+export type { CodeViewerProps } from "./components/code-viewer";
 export {
   Command,
   CommandEmpty,

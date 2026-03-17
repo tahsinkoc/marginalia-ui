@@ -30,6 +30,7 @@ import {
   CardTitle,
   Checkbox,
   Combobox,
+  CodeViewer,
   CommandPalette,
   DataTable,
   ContextMenu,
@@ -296,6 +297,53 @@ const orderColumns: DataTableColumn<OrderRow>[] = [
       )
   }
 ];
+
+const typescriptSnippet = `type Order = {
+  id: string;
+  total: number;
+  status: "paid" | "processing" | "at-risk";
+};
+
+const columns: DataTableColumn<Order>[] = [
+  {
+    accessorKey: "id",
+    header: "Order",
+    sortable: true
+  },
+  {
+    accessorKey: "total",
+    header: "Total",
+    align: "right",
+    sortable: true,
+    cell: ({ value }) => currency.format(Number(value))
+  }
+];`;
+
+const javascriptSnippet = `export function queueDraft(order) {
+  if (order.status !== "paid") {
+    return {
+      ready: false,
+      reason: "Payment must be confirmed first."
+    };
+  }
+
+  return {
+    ready: true,
+    priority: order.total > 250 ? "high" : "standard"
+  };
+}`;
+
+const pythonSnippet = `from collections import Counter
+
+def summarize_orders(orders):
+    counts = Counter(order["status"] for order in orders)
+    total = sum(order["total"] for order in orders)
+
+    return {
+        "count": len(orders),
+        "total": total,
+        "statuses": dict(counts),
+    }`;
 
 export default function ComponentsPage() {
   const [menuChoice, setMenuChoice] = useState("Archive draft");
@@ -966,6 +1014,44 @@ export default function ComponentsPage() {
                 initialSort={{ id: "placedAt", direction: "desc" }}
                 rowClassName={(row) => (row.status === "At risk" ? "bg-warning/5" : undefined)}
               />
+            </div>
+          </ShowcasePanel>
+
+          <ShowcasePanel className="span-12">
+            <div className="section-stack">
+              <div className="eyebrow">Code viewer</div>
+              <Tabs defaultValue="typescript">
+                <TabsList>
+                  <TabsTrigger value="typescript">TypeScript</TabsTrigger>
+                  <TabsTrigger value="javascript">JavaScript</TabsTrigger>
+                  <TabsTrigger value="python">Python</TabsTrigger>
+                </TabsList>
+                <TabsContent value="typescript">
+                  <CodeViewer
+                    filename="orders-table.tsx"
+                    language="tsx"
+                    caption="Warm syntax highlighting for snippets, docs examples, and implementation notes."
+                    code={typescriptSnippet}
+                    highlightedLines={[6, 15]}
+                  />
+                </TabsContent>
+                <TabsContent value="javascript">
+                  <CodeViewer
+                    filename="queue-draft.js"
+                    language="javascript"
+                    code={javascriptSnippet}
+                    highlightedLines={[2, 10]}
+                  />
+                </TabsContent>
+                <TabsContent value="python">
+                  <CodeViewer
+                    filename="summaries.py"
+                    language="python"
+                    code={pythonSnippet}
+                    highlightedLines={[3, 7]}
+                  />
+                </TabsContent>
+              </Tabs>
             </div>
           </ShowcasePanel>
 

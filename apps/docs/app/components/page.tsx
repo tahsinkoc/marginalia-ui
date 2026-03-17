@@ -665,7 +665,7 @@ export default function ComponentsPage() {
                     <TableHead>Title</TableHead>
                     <TableHead>Owner</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Updated</TableHead>
+                    <TableHead>Updated</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -674,7 +674,7 @@ export default function ComponentsPage() {
                       <TableCell className="font-medium">{row.title}</TableCell>
                       <TableCell>{row.owner}</TableCell>
                       <TableCell>{row.status}</TableCell>
-                      <TableCell className="text-right text-textMuted">{row.updated}</TableCell>
+                      <TableCell className="text-textMuted">{row.updated}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

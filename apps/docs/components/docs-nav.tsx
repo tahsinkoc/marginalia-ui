@@ -26,9 +26,21 @@ const brandName = "Marginalia";
 export function DocsNav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 12);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
       <div className="site-header-inner">
         <div className="site-header-content">
           <div className="brand-panel">
@@ -110,4 +122,3 @@ function MenuIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marginalia UI"
+  short_description: "Build React and Next UI with Marginalia components, tokens, and visual rules."
+  default_prompt: "Build or refine React and Next interfaces primarily with @marginalia/ui. Prefer existing Marginalia components and theme tokens over custom styling or external UI kits."

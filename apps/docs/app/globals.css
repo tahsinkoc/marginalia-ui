@@ -10,14 +10,9 @@ html {
 body {
   position: relative;
   background:
-    radial-gradient(circle at top left, rgb(var(--marginalia-color-surface) / 0.84), transparent 34%),
-    radial-gradient(circle at top right, rgb(var(--marginalia-color-accent-soft) / 0.42), transparent 28%),
-    linear-gradient(
-      180deg,
-      rgb(var(--marginalia-color-canvas) / 0.98) 0%,
-      rgb(var(--marginalia-color-surface) / 0.94) 44%,
-      rgb(var(--marginalia-color-surface-alt) / 0.98) 100%
-    );
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 34%),
+    radial-gradient(circle at top right, rgba(229, 216, 196, 0.55), transparent 28%),
+    linear-gradient(180deg, rgba(247, 242, 233, 0.96) 0%, rgba(244, 238, 229, 0.98) 50%, rgba(239, 232, 221, 1) 100%);
   color: rgb(var(--marginalia-color-text));
 }
 
@@ -26,8 +21,8 @@ body::before {
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgb(var(--marginalia-color-accent) / 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--marginalia-color-accent) / 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(157, 112, 78, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 112, 78, 0.045) 1px, transparent 1px);
   background-size: 88px 88px;
   content: "";
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0));
@@ -54,8 +49,8 @@ a {
   right: 0;
   z-index: 20;
   width: 100%;
-  border-bottom: 1px solid rgb(var(--marginalia-color-border) / 0.4);
-  background: rgb(var(--marginalia-color-surface) / 0.52);
+  border-bottom: 1px solid rgba(211, 197, 177, 0.4);
+  background: rgba(255, 250, 243, 0.52);
   backdrop-filter: blur(10px);
   transition:
     background-color 180ms ease,
@@ -65,9 +60,9 @@ a {
 }
 
 .site-header.is-scrolled {
-  border-bottom-color: rgb(var(--marginalia-color-border) / 0.82);
-  background: rgb(var(--marginalia-color-surface) / 0.92);
-  box-shadow: var(--marginalia-shadow-panel);
+  border-bottom-color: rgba(211, 197, 177, 0.82);
+  background: rgba(255, 250, 243, 0.92);
+  box-shadow: 0 16px 36px -28px rgba(90, 66, 43, 0.34);
   backdrop-filter: blur(18px);
 }
 
@@ -257,10 +252,10 @@ a {
 }
 
 .showcase-panel {
-  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
+  border: 1px solid rgba(211, 197, 177, 0.9);
   border-radius: 32px;
-  background: rgb(var(--marginalia-color-surface) / 0.78);
-  box-shadow: var(--marginalia-shadow-panel);
+  background: rgba(255, 250, 243, 0.74);
+  box-shadow: 0 20px 50px -34px rgba(90, 66, 43, 0.3);
   padding: 1.4rem;
   backdrop-filter: blur(10px);
 }
@@ -287,15 +282,15 @@ a {
 .token-card {
   display: grid;
   gap: 0.9rem;
-  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
+  border: 1px solid rgba(211, 197, 177, 0.9);
   border-radius: 26px;
-  background: rgb(var(--marginalia-color-surface) / 0.82);
+  background: rgba(255, 250, 243, 0.82);
   padding: 1rem;
 }
 
 .token-swatch {
   height: 5rem;
-  border: 1px solid rgb(var(--marginalia-color-text) / 0.08);
+  border: 1px solid rgba(59, 47, 38, 0.08);
   border-radius: 18px;
 }
 
@@ -319,9 +314,9 @@ a {
 
 pre.code-block {
   overflow-x: auto;
-  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
+  border: 1px solid rgba(211, 197, 177, 0.9);
   border-radius: 28px;
-  background: rgb(var(--marginalia-color-surface) / 0.82);
+  background: rgba(255, 250, 243, 0.82);
   padding: 1.25rem;
   color: rgb(var(--marginalia-color-text));
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
@@ -492,9 +487,9 @@ pre.code-block {
   display: grid;
   gap: 0.35rem;
   min-width: 11rem;
-  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
+  border: 1px solid rgba(211, 197, 177, 0.9);
   border-radius: 22px;
-  background: rgb(var(--marginalia-color-surface) / 0.76);
+  background: rgba(255, 250, 243, 0.76);
   padding: 0.9rem 1rem;
   color: rgb(var(--marginalia-color-text));
   cursor: pointer;
@@ -504,13 +499,13 @@ pre.code-block {
 
 .theme-preset-button:hover {
   transform: translateY(-1px);
-  border-color: rgb(var(--marginalia-color-accent) / 0.36);
-  background: rgb(var(--marginalia-color-accent-soft) / 0.65);
+  border-color: rgba(157, 112, 78, 0.36);
+  background: rgba(229, 216, 196, 0.65);
 }
 
 .theme-preset-button.is-active {
-  border-color: rgb(var(--marginalia-color-accent) / 0.52);
-  background: rgb(var(--marginalia-color-accent-soft) / 0.9);
+  border-color: rgba(157, 112, 78, 0.52);
+  background: rgba(229, 216, 196, 0.9);
 }
 
 .theme-control-grid,
@@ -524,9 +519,9 @@ pre.code-block {
 .theme-range-field {
   display: grid;
   gap: 0.65rem;
-  border: 1px solid rgb(var(--marginalia-color-border) / 0.85);
+  border: 1px solid rgba(211, 197, 177, 0.85);
   border-radius: 22px;
-  background: rgb(var(--marginalia-color-surface) / 0.66);
+  background: rgba(255, 250, 243, 0.66);
   padding: 0.9rem 1rem;
 }
 
@@ -553,12 +548,12 @@ pre.code-block {
 }
 
 .theme-color-input::-webkit-color-swatch {
-  border: 1px solid rgb(var(--marginalia-color-border) / 0.8);
+  border: 1px solid rgba(211, 197, 177, 0.8);
   border-radius: 999px;
 }
 
 .theme-color-input::-moz-color-swatch {
-  border: 1px solid rgb(var(--marginalia-color-border) / 0.8);
+  border: 1px solid rgba(211, 197, 177, 0.8);
   border-radius: 999px;
 }
 
@@ -581,12 +576,12 @@ pre.code-block {
 }
 
 .theme-preview-shell {
-  border: 1px solid rgb(var(--marginalia-color-border) / 0.9);
+  border: 1px solid rgba(211, 197, 177, 0.9);
   border-radius: 32px;
   background: linear-gradient(
     180deg,
-    rgb(var(--marginalia-color-surface) / 0.98) 0%,
-    rgb(var(--marginalia-color-surface-alt) / 0.72) 100%
+    rgba(255, 250, 243, 0.98) 0%,
+    rgba(239, 231, 218, 0.72) 100%
   );
   padding: 1rem;
 }
@@ -594,8 +589,8 @@ pre.code-block {
 .theme-preview-canvas {
   border-radius: 28px;
   background:
-    radial-gradient(circle at top left, rgb(var(--marginalia-color-surface) / 0.88), transparent 32%),
-    linear-gradient(180deg, rgb(var(--marginalia-color-canvas) / 0.98) 0%, rgb(var(--marginalia-color-surface-alt) / 0.58) 100%);
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 32%),
+    linear-gradient(180deg, rgba(247, 242, 233, 0.98) 0%, rgba(239, 231, 218, 0.58) 100%);
   padding: 1rem;
 }
 
@@ -620,6 +615,121 @@ pre.code-block {
   align-items: center;
   gap: 0.85rem;
   margin-bottom: 1rem;
+}
+
+.dark body,
+[data-marginalia-theme="dark"] body {
+  background:
+    radial-gradient(circle at top left, rgb(var(--marginalia-color-surface) / 0.36), transparent 34%),
+    radial-gradient(circle at top right, rgb(var(--marginalia-color-accent-soft) / 0.42), transparent 28%),
+    linear-gradient(
+      180deg,
+      rgb(var(--marginalia-color-canvas) / 0.98) 0%,
+      rgb(var(--marginalia-color-surface) / 0.96) 46%,
+      rgb(var(--marginalia-color-surface-alt) / 0.98) 100%
+    );
+}
+
+.dark body::before,
+[data-marginalia-theme="dark"] body::before {
+  background-image:
+    linear-gradient(rgb(var(--marginalia-color-accent) / 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--marginalia-color-accent) / 0.075) 1px, transparent 1px);
+}
+
+.dark .site-header,
+[data-marginalia-theme="dark"] .site-header {
+  border-bottom-color: rgb(var(--marginalia-color-border) / 0.38);
+  background: rgb(var(--marginalia-color-surface) / 0.48);
+}
+
+.dark .site-header.is-scrolled,
+[data-marginalia-theme="dark"] .site-header.is-scrolled {
+  border-bottom-color: rgb(var(--marginalia-color-border) / 0.82);
+  background: rgb(var(--marginalia-color-surface) / 0.9);
+  box-shadow: var(--marginalia-shadow-panel);
+}
+
+.dark .showcase-panel,
+.dark .token-card,
+.dark pre.code-block,
+.dark .theme-preset-button,
+.dark .theme-color-field,
+.dark .theme-range-field,
+.dark .theme-preview-shell,
+[data-marginalia-theme="dark"] .showcase-panel,
+[data-marginalia-theme="dark"] .token-card,
+[data-marginalia-theme="dark"] pre.code-block,
+[data-marginalia-theme="dark"] .theme-preset-button,
+[data-marginalia-theme="dark"] .theme-color-field,
+[data-marginalia-theme="dark"] .theme-range-field,
+[data-marginalia-theme="dark"] .theme-preview-shell {
+  border-color: rgb(var(--marginalia-color-border) / 0.88);
+}
+
+.dark .showcase-panel,
+[data-marginalia-theme="dark"] .showcase-panel {
+  background: rgb(var(--marginalia-color-surface) / 0.78);
+  box-shadow: var(--marginalia-shadow-panel);
+}
+
+.dark .token-card,
+.dark pre.code-block,
+[data-marginalia-theme="dark"] .token-card,
+[data-marginalia-theme="dark"] pre.code-block {
+  background: rgb(var(--marginalia-color-surface) / 0.82);
+}
+
+.dark .token-swatch,
+[data-marginalia-theme="dark"] .token-swatch {
+  border-color: rgb(var(--marginalia-color-text) / 0.12);
+}
+
+.dark .theme-preset-button,
+[data-marginalia-theme="dark"] .theme-preset-button {
+  background: rgb(var(--marginalia-color-surface) / 0.76);
+}
+
+.dark .theme-preset-button:hover,
+[data-marginalia-theme="dark"] .theme-preset-button:hover {
+  border-color: rgb(var(--marginalia-color-accent) / 0.4);
+  background: rgb(var(--marginalia-color-accent-soft) / 0.72);
+}
+
+.dark .theme-preset-button.is-active,
+[data-marginalia-theme="dark"] .theme-preset-button.is-active {
+  border-color: rgb(var(--marginalia-color-accent) / 0.58);
+  background: rgb(var(--marginalia-color-accent-soft) / 0.94);
+}
+
+.dark .theme-color-field,
+.dark .theme-range-field,
+[data-marginalia-theme="dark"] .theme-color-field,
+[data-marginalia-theme="dark"] .theme-range-field {
+  background: rgb(var(--marginalia-color-surface) / 0.66);
+}
+
+.dark .theme-color-input::-webkit-color-swatch,
+[data-marginalia-theme="dark"] .theme-color-input::-webkit-color-swatch,
+.dark .theme-color-input::-moz-color-swatch,
+[data-marginalia-theme="dark"] .theme-color-input::-moz-color-swatch {
+  border-color: rgb(var(--marginalia-color-border) / 0.8);
+}
+
+.dark .theme-preview-shell,
+[data-marginalia-theme="dark"] .theme-preview-shell {
+  background: linear-gradient(
+    180deg,
+    rgb(var(--marginalia-color-surface) / 0.98) 0%,
+    rgb(var(--marginalia-color-surface-alt) / 0.72) 100%
+  );
+}
+
+.dark .theme-preview-canvas,
+[data-marginalia-theme="dark"] .theme-preview-canvas {
+  background:
+    radial-gradient(circle at top left, rgb(var(--marginalia-color-surface) / 0.3), transparent 32%),
+    linear-gradient(180deg, rgb(var(--marginalia-color-canvas) / 0.98) 0%, rgb(var(--marginalia-color-surface-alt) / 0.58) 100%);
 }
 
 @media (max-width: 960px) {

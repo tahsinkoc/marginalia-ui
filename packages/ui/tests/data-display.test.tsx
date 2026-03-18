@@ -47,6 +47,23 @@ describe("DatePicker, Table, Pagination, and EmptyState", () => {
     expect(screen.getByRole("button", { name: /review deadline/i })).toHaveTextContent("March 15, 2026");
   });
 
+  it("keeps a single month caption visible while navigating the date picker", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <DatePicker
+        label="Review deadline"
+        placeholder="Choose a date"
+        calendarProps={{ defaultMonth: new Date(2026, 2, 1) }}
+      />
+    );
+
+    await user.click(screen.getByRole("button", { name: /review deadline/i }));
+    await user.click(screen.getByRole("button", { name: /next month/i }));
+
+    expect(screen.getAllByText(/april 2026/i)).toHaveLength(1);
+  });
+
   it("renders table content and caption", () => {
     render(
       <Table>

@@ -14,7 +14,10 @@ export function Calendar({
   className,
   classNames,
   showOutsideDays = true,
-  animate = true,
+  // DayPicker keeps both months in the DOM during animated transitions.
+  // We don't ship its full animation stylesheet, so disabling animation by
+  // default avoids the duplicated-month glitch in DatePicker/Calendar.
+  animate = false,
   ...props
 }: CalendarProps) {
   return (
@@ -59,4 +62,3 @@ export function Calendar({
     />
   );
 }
-

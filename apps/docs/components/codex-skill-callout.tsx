@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, CodeViewer, buttonVariants } from "@marginalia/ui";
 
-const codexPromptSnippet = `import "@marginalia/ui/styles.css";
+const installSnippet = `npm install marginalia-ui`;
+
+const codexPromptSnippet = `import "marginalia-ui/styles.css";
 
 // Use $marginalia-ui at ./skills/marginalia-ui to build a warm editorial
-// page with @marginalia/ui. Prefer existing Marginalia components and
+// page with marginalia-ui. Prefer existing Marginalia components and
 // theme tokens over custom styling or another UI kit.`;
 
 export function CodexSkillCallout({
@@ -23,8 +25,8 @@ export function CodexSkillCallout({
         </div>
         <CardTitle>Marginalia comes with a Codex-ready skill.</CardTitle>
         <CardDescription>
-          The repo includes <span className="mono-note">skills/marginalia-ui</span> so Codex can learn the full
-          component set, theme tokens, page recipes, and usage patterns before it starts building.
+          Install the package from npm, then use the bundled skill from the GitHub repo so Codex can learn the
+          full component set, theme tokens, page recipes, and usage patterns before it starts building.
         </CardDescription>
       </CardHeader>
       <CardContent className="section-stack">
@@ -35,18 +37,32 @@ export function CodexSkillCallout({
           <Badge>Page recipes</Badge>
         </div>
         <CodeViewer
+          filename="install.sh"
+          language="bash"
+          caption="Install from npm"
+          code={installSnippet}
+        />
+        <CodeViewer
           filename="codex-prompt.ts"
           language="tsx"
           caption="Prompt Codex with the bundled skill"
           code={codexPromptSnippet}
         />
-        {ctaHref ? (
-          <div>
+        <div className="inline-actions" style={{ gap: "0.65rem", marginTop: 0 }}>
+          <a
+            href="https://github.com/tahsinkoc/marginalia-ui"
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({ variant: "secondary", size: "sm" })}
+          >
+            GitHub repo
+          </a>
+          {ctaHref ? (
             <Link href={ctaHref} className={buttonVariants({ variant: "outline", size: "sm" })}>
               {ctaLabel}
             </Link>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </CardContent>
     </Card>
   );

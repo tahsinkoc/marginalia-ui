@@ -4,6 +4,15 @@ Marginalia is a warm, academic, editorial React and Next.js UI library designed 
 
 It focuses on a calmer visual language: paper-like surfaces, restrained contrast, elegant typography, and a warm theme system that works especially well for blogs, essays, knowledge products, editorial platforms, documentation, and content-heavy interfaces.
 
+## npm Package
+
+- Package: [marginalia-ui](https://www.npmjs.com/package/marginalia-ui)
+- Current version: `0.1.2`
+
+```bash
+npm install marginalia-ui
+```
+
 ## Why Marginalia
 
 Most AI-built websites drift toward the same look:
@@ -130,7 +139,7 @@ If you want Codex to build with Marginalia instead of inventing unrelated UI, po
 Example prompt:
 
 ```txt
-Use $marginalia-ui at ./skills/marginalia-ui to build a warm editorial landing page with @marginalia/ui.
+Use $marginalia-ui at ./skills/marginalia-ui to build a warm editorial landing page with marginalia-ui.
 Prefer existing Marginalia components and theme tokens over custom styling or another UI kit.
 ```
 

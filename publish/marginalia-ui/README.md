@@ -1,24 +1,37 @@
 # Marginalia UI
 
-Marginalia is a warm, academic, and elegant UI kit for the React and Next ecosystem. It ships as a prebuilt package with compiled CSS, so consuming apps do not need Tailwind configured to use the components.
+Marginalia UI is a warm, academic, and elegant React/Next UI kit for teams that want calmer, more editorial interfaces than the usual AI-generated website output.
 
-## Install
+It is especially well suited to:
+
+- blogs
+- essays
+- docs portals
+- knowledge products
+- editorial products
+- content-heavy websites
+
+## npm
 
 ```bash
-npm install @marginalia/ui
+npm install marginalia-ui
 ```
 
 Import the stylesheet once near your app root:
 
 ```tsx
-import "@marginalia/ui/styles.css";
+import "marginalia-ui/styles.css";
 ```
+
+## GitHub Repository
+
+- https://github.com/tahsinkoc/marginalia-ui
 
 ## Quick Start
 
 ```tsx
-import { Badge, Button, Card, CardContent, CardHeader, CardTitle, Input } from "@marginalia/ui";
-import "@marginalia/ui/styles.css";
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle, Input } from "marginalia-ui";
+import "marginalia-ui/styles.css";
 
 export function Example() {
   return (
@@ -38,17 +51,28 @@ export function Example() {
 
 ## Included Components
 
-Marginalia currently includes foundations, forms, overlays, data display, navigation, editorial, and utility components such as:
+Marginalia currently includes:
 
-- `Button`, `Input`, `Textarea`, `Label`, `Select`, `Checkbox`, `RadioGroup`, `Switch`
-- `Dialog`, `Sheet`, `Popover`, `Tooltip`, `DropdownMenu`, `ContextMenu`, `HoverCard`, `Menubar`, `Toast`
-- `Table`, `DataTable<T>`, `DatePicker`, `Calendar`, `Pagination`, `Tabs`, `Accordion`
-- `Card`, `Badge`, `Alert`, `Progress`, `Avatar`, `EmptyState`, `Breadcrumb`, `Skeleton`, `Stepper`
-- `CodeViewer`, `Combobox`, `Command`, `CommandPalette`, `RichTextSurface`
+- Foundations: `Button`, `Badge`, `Alert`, `Avatar`, `Card`, `Label`
+- Forms: `Input`, `Textarea`, `Checkbox`, `RadioGroup`, `Switch`, `Select`, `Combobox`, `Calendar`, `DatePicker`
+- Overlays: `Dialog`, `Sheet`, `DropdownMenu`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`, `Toast`, `Command`, `CommandPalette`
+- Navigation: `Tabs`, `Accordion`, `Breadcrumb`, `Menubar`, `Pagination`
+- Data and editorial: `DataTable<T>`, `Table`, `EmptyState`, `Skeleton`, `Progress`, `Stepper`, `CodeViewer`, `RichTextSurface`
 
 ## Theme Customization
 
-Marginalia is token-driven. The compiled CSS exposes all theme tokens as CSS variables, so you can customize the library from your own global stylesheet without rebuilding the package.
+Marginalia is token-driven.
+
+The compiled CSS exposes warm, semantic variables for:
+
+- color
+- radius
+- shadow
+- spacing
+- density
+- typography
+
+Example override:
 
 ```css
 :root {
@@ -66,26 +90,55 @@ Marginalia is token-driven. The compiled CSS exposes all theme tokens as CSS var
 }
 ```
 
-Useful token groups:
+Marginalia supports:
 
-- Color tokens: `--marginalia-color-*`
-- Radius tokens: `--marginalia-radius-*`
-- Spacing tokens: `--marginalia-space-*`
-- Size tokens: `--marginalia-size-*`
-- Shadow tokens: `--marginalia-shadow-*`
+- warm light defaults
+- warm dark mode
+- compact or roomier density tuning
+- theme directions that feel more authored than generic UI presets
 
-## Dark Mode
+## Use with Codex
 
-Marginalia supports dark mode through either a `.dark` class or a `[data-marginalia-theme="dark"]` attribute on an ancestor element.
+Marginalia is designed to work especially well with AI-assisted frontend building.
 
-## Publishing This Folder
+The GitHub repo includes a dedicated Codex skill:
 
-This directory is already prepared as a standalone npm package. To publish it:
+- `skills/marginalia-ui`
 
-```bash
-cd publish/marginalia-ui
-npm publish
+That skill teaches Codex how to use the system correctly:
+
+- which components to prefer
+- how to stay inside the Marginalia visual language
+- how to use theme tokens instead of random overrides
+- how to compose full pages from the kit
+- how to keep warm/editorial styling intact
+
+Example prompt:
+
+```txt
+Use $marginalia-ui at ./skills/marginalia-ui to build a warm editorial landing page with marginalia-ui.
+Prefer existing Marginalia components and theme tokens over custom styling or another UI kit.
 ```
+
+## Why the Skill Matters
+
+Many AI-built websites end up looking interchangeable.
+
+Marginalia tries to solve that by combining:
+
+- a distinctive warm UI system
+- token-based theme building
+- standardized component usage
+- a Codex skill that teaches the system to use itself
+
+This helps agents generate UI that is:
+
+- more consistent
+- more recognizable
+- more warm and editorial
+- less generic
+
+It also means that even smaller models or lighter-weight agents can still stay above a stronger baseline when building UI, because the skill gives them a clearer system to follow.
 
 ## License
 

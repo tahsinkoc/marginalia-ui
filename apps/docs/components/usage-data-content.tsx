@@ -28,6 +28,7 @@ import {
 } from "@marginalia/ui";
 import type { DataTableColumn } from "@marginalia/ui";
 
+import { createUsageSnippet } from "./usage-snippet";
 import type { UsageSection } from "./usage-types";
 
 type OrderRow = {
@@ -105,11 +106,36 @@ export const contentUsageSections: UsageSection[] = [
     category: "Data",
     description: "Typed column definitions, richer cells, and built-in sorting for app-level tables.",
     filename: "data-table.tsx",
-    code: `const columns: DataTableColumn<Order>[] = [
+    code: createUsageSnippet({
+      imports: ["Badge", "DataTable"],
+      typeImports: ["DataTableColumn"],
+      body: `
+type Order = {
+  id: string;
+  customer: string;
+  status: "Paid" | "Processing" | "At risk";
+  total: number;
+};
+
+const orders: Order[] = [
+  { id: "ORD-2048", customer: "Mina Albright", status: "Paid", total: 248 },
+  { id: "ORD-2041", customer: "Jonah Rivera", status: "Processing", total: 132 }
+];
+
+const columns: DataTableColumn<Order>[] = [
   {
     accessorKey: "id",
     header: "Order",
     sortable: true
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ value }) => (
+      <Badge variant={value === "Paid" ? "success" : "accent"}>
+        {String(value)}
+      </Badge>
+    )
   },
   {
     accessorKey: "total",
@@ -119,7 +145,19 @@ export const contentUsageSections: UsageSection[] = [
   }
 ];
 
-<DataTable columns={columns} data={orders} initialSort={{ id: "total", direction: "desc" }} />`,
+export function OrdersTable() {
+  return (
+    <DataTable
+      title="Recent orders"
+      description="Typed rows and custom cells stay readable even in denser views."
+      columns={columns}
+      data={orders}
+      initialSort={{ id: "total", direction: "desc" }}
+    />
+  );
+}
+      `
+    }),
     preview: (
       <DataTable<OrderRow>
         title="Recent orders"
@@ -137,20 +175,40 @@ export const contentUsageSections: UsageSection[] = [
     category: "Data",
     description: "Lower-level table primitives for simpler, hand-authored tabular layouts.",
     filename: "table.tsx",
-    code: `<Table>
-  <TableHeader>
-    <TableRow>
-      <TableHead>Title</TableHead>
-      <TableHead>Status</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell>Scholar's preface</TableCell>
-      <TableCell>Ready</TableCell>
-    </TableRow>
-  </TableBody>
-</Table>`,
+    code: createUsageSnippet({
+      imports: [
+        "Table",
+        "TableBody",
+        "TableCell",
+        "TableHead",
+        "TableHeader",
+        "TableRow"
+      ],
+      body: `
+export function EditorialTable() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Title</TableHead>
+          <TableHead>Status</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Scholar's preface</TableCell>
+          <TableCell>Ready</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Archive annotation</TableCell>
+          <TableCell>Needs review</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+}
+      `
+    }),
     preview: (
       <Table>
         <TableHeader>
@@ -178,13 +236,30 @@ export const contentUsageSections: UsageSection[] = [
     category: "Data",
     description: "Purposeful empty placeholders with copy and actions already composed.",
     filename: "empty-state.tsx",
-    code: `<EmptyState>
-  <EmptyStateTitle>No records yet</EmptyStateTitle>
-  <EmptyStateDescription>Create your first review to populate the queue.</EmptyStateDescription>
-  <EmptyStateFooter>
-    <Button>Create review</Button>
-  </EmptyStateFooter>
-</EmptyState>`,
+    code: createUsageSnippet({
+      imports: [
+        "Button",
+        "EmptyState",
+        "EmptyStateDescription",
+        "EmptyStateFooter",
+        "EmptyStateIcon",
+        "EmptyStateTitle"
+      ],
+      body: `
+export function EmptyReviews() {
+  return (
+    <EmptyState>
+      <EmptyStateIcon>R</EmptyStateIcon>
+      <EmptyStateTitle>No records yet</EmptyStateTitle>
+      <EmptyStateDescription>Create your first review to populate the queue.</EmptyStateDescription>
+      <EmptyStateFooter>
+        <Button>Create review</Button>
+      </EmptyStateFooter>
+    </EmptyState>
+  );
+}
+      `
+    }),
     preview: (
       <EmptyState>
         <EmptyStateIcon>
@@ -204,12 +279,25 @@ export const contentUsageSections: UsageSection[] = [
     category: "Data",
     description: "Loading placeholders with a gentle shimmer instead of aggressive chrome.",
     filename: "skeleton.tsx",
-    code: `<Card>
-  <CardHeader>
-    <Skeleton className="h-5 w-24 rounded-full" />
-    <Skeleton className="h-10 w-3/4" />
-  </CardHeader>
-</Card>`,
+    code: createUsageSnippet({
+      imports: ["Card", "CardContent", "CardHeader", "Skeleton"],
+      body: `
+export function LoadingCard() {
+  return (
+    <Card>
+      <CardHeader>
+        <Skeleton className="h-5 w-24 rounded-full" />
+        <Skeleton className="h-10 w-3/4" />
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="h-12 w-full" />
+        <Skeleton className="h-24 w-full rounded-[24px]" />
+      </CardContent>
+    </Card>
+  );
+}
+      `
+    }),
     preview: (
       <Card>
         <CardHeader>
@@ -229,8 +317,19 @@ export const contentUsageSections: UsageSection[] = [
     category: "Data",
     description: "Soft progress indicators that stay calm in dashboards and workflows.",
     filename: "progress.tsx",
-    code: `<Progress value={68} />
-<Progress value={42} variant="warning" />`,
+    code: createUsageSnippet({
+      imports: ["Progress"],
+      body: `
+export function ReviewProgress() {
+  return (
+    <>
+      <Progress value={68} />
+      <Progress value={42} variant="warning" />
+    </>
+  );
+}
+      `
+    }),
     preview: (
       <div className="section-stack">
         <div className="section-stack" style={{ gap: "0.5rem" }}>
@@ -250,11 +349,20 @@ export const contentUsageSections: UsageSection[] = [
     category: "Data",
     description: "Progression primitives for multi-step editorial or operational flows.",
     filename: "stepper.tsx",
-    code: `<Stepper>
-  <StepperItem step="1" status="complete" title="Draft prepared" />
-  <StepperItem step="2" status="current" title="Design review" />
-  <StepperItem step="3" status="upcoming" title="Publish" />
-</Stepper>`,
+    code: createUsageSnippet({
+      imports: ["Stepper", "StepperItem"],
+      body: `
+export function PublishStepper() {
+  return (
+    <Stepper>
+      <StepperItem step="1" status="complete" title="Draft prepared" />
+      <StepperItem step="2" status="current" title="Design review" />
+      <StepperItem step="3" status="upcoming" title="Publish" />
+    </Stepper>
+  );
+}
+      `
+    }),
     preview: (
       <Stepper>
         <StepperItem step="1" status="complete" title="Draft prepared" />
@@ -269,12 +377,32 @@ export const contentUsageSections: UsageSection[] = [
     category: "Editorial",
     description: "Syntax-highlighted snippets with line numbers, filename metadata, and warm token mapping.",
     filename: "code-viewer.tsx",
-    code: `<CodeViewer
-  filename="queue-draft.ts"
-  language="typescript"
-  code={source}
-  highlightedLines={[2, 6]}
-/>`,
+    code: createUsageSnippet({
+      imports: ["CodeViewer"],
+      body: `
+const source = \`export function queueDraft(order) {
+  if (order.status !== "paid") {
+    return { ready: false };
+  }
+
+  return {
+    ready: true,
+    priority: order.total > 250 ? "high" : "standard"
+  };
+}\`;
+
+export function QueueDraftViewer() {
+  return (
+    <CodeViewer
+      filename="queue-draft.ts"
+      language="typescript"
+      code={source}
+      highlightedLines={[2, 7]}
+    />
+  );
+}
+      `
+    }),
     preview: (
       <CodeViewer
         filename="queue-draft.ts"
@@ -290,12 +418,24 @@ export const contentUsageSections: UsageSection[] = [
     category: "Editorial",
     description: "Long-form reading surfaces for notes, essays, release posts, and rationale docs.",
     filename: "rich-text-surface.tsx",
-    code: `<RichTextSurface>
-  <h1>Editorial notes with a calmer cadence.</h1>
-  <RichTextLead>
-    RichTextSurface gives longer explanations a more considered rhythm.
-  </RichTextLead>
-</RichTextSurface>`,
+    code: createUsageSnippet({
+      imports: ["RichTextLead", "RichTextSurface"],
+      body: `
+export function ReleaseNotesSurface() {
+  return (
+    <RichTextSurface>
+      <h1>Editorial notes with a calmer cadence.</h1>
+      <RichTextLead>
+        RichTextSurface gives longer explanations a more considered rhythm.
+      </RichTextLead>
+      <p>
+        Use it for release notes, essays, design rationales, or deeper docs pages where reading flow matters.
+      </p>
+    </RichTextSurface>
+  );
+}
+      `
+    }),
     preview: (
       <RichTextSurface>
         <h1>Editorial notes with a calmer cadence.</h1>

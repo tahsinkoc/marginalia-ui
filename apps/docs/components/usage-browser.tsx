@@ -150,7 +150,7 @@ export function UsageBrowser() {
                 <CodeViewer
                   filename={activeSection.filename}
                   language={resolveSnippetLanguage(activeSection.filename)}
-                  caption="Starter usage snippet"
+                  caption="Starter usage snippet with imports"
                   code={activeSection.code}
                 />
               </div>

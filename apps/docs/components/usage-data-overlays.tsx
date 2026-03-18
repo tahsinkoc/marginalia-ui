@@ -61,6 +61,7 @@ import {
   TooltipTrigger
 } from "@marginalia/ui";
 
+import { createUsageSnippet } from "./usage-snippet";
 import type { UsageSection } from "./usage-types";
 
 export const overlayUsageSections: UsageSection[] = [
@@ -70,23 +71,41 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "A modal confirmation flow with warm surfaces and restrained motion.",
     filename: "dialog.tsx",
-    code: `<Dialog>
-  <DialogTrigger asChild>
-    <Button>Open dialog</Button>
-  </DialogTrigger>
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Publish the current draft?</DialogTitle>
-      <DialogDescription>
-        Confirm before sending this note to the review queue.
-      </DialogDescription>
-    </DialogHeader>
-    <DialogFooter>
-      <Button variant="secondary">Cancel</Button>
-      <Button>Publish</Button>
-    </DialogFooter>
-  </DialogContent>
-</Dialog>`,
+    code: createUsageSnippet({
+      imports: [
+        "Button",
+        "Dialog",
+        "DialogContent",
+        "DialogDescription",
+        "DialogFooter",
+        "DialogHeader",
+        "DialogTitle",
+        "DialogTrigger"
+      ],
+      body: `
+export function PublishDialog() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Publish the current draft?</DialogTitle>
+          <DialogDescription>
+            Confirm before sending this note to the review queue.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="secondary">Cancel</Button>
+          <Button>Publish</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+      `
+    }),
     preview: (
       <Dialog>
         <DialogTrigger asChild>
@@ -111,20 +130,44 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "Side panels for denser utility flows, review queues, and contextual editing.",
     filename: "sheet.tsx",
-    code: `<Sheet>
-  <SheetTrigger asChild>
-    <Button variant="outline">Open sheet</Button>
-  </SheetTrigger>
-  <SheetContent side="right">
-    <SheetHeader>
-      <SheetTitle>Editorial handoff</SheetTitle>
-      <SheetDescription>Review the current batch before publishing.</SheetDescription>
-    </SheetHeader>
-    <SheetBody>
-      <Input value="Annotations ready for final pass." readOnly />
-    </SheetBody>
-  </SheetContent>
-</Sheet>`,
+    code: createUsageSnippet({
+      imports: [
+        "Button",
+        "Input",
+        "Sheet",
+        "SheetBody",
+        "SheetContent",
+        "SheetDescription",
+        "SheetFooter",
+        "SheetHeader",
+        "SheetTitle",
+        "SheetTrigger"
+      ],
+      body: `
+export function EditorialSheet() {
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Open sheet</Button>
+      </SheetTrigger>
+      <SheetContent side="right">
+        <SheetHeader>
+          <SheetTitle>Editorial handoff</SheetTitle>
+          <SheetDescription>Review the current batch before publishing.</SheetDescription>
+        </SheetHeader>
+        <SheetBody>
+          <Input value="Annotations ready for final pass." readOnly />
+        </SheetBody>
+        <SheetFooter>
+          <Button size="sm" variant="secondary">Dismiss</Button>
+          <Button size="sm">Continue</Button>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  );
+}
+      `
+    }),
     preview: (
       <Sheet>
         <SheetTrigger asChild>
@@ -154,17 +197,35 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "Action menus for compact contextual operations.",
     filename: "dropdown-menu.tsx",
-    code: `<DropdownMenu>
-  <DropdownMenuTrigger asChild>
-    <Button variant="outline">Quick actions</Button>
-  </DropdownMenuTrigger>
-  <DropdownMenuContent>
-    <DropdownMenuLabel>Editorial actions</DropdownMenuLabel>
-    <DropdownMenuItem>Archive draft</DropdownMenuItem>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem destructive>Delete permanently</DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu>`,
+    code: createUsageSnippet({
+      imports: [
+        "Button",
+        "DropdownMenu",
+        "DropdownMenuContent",
+        "DropdownMenuItem",
+        "DropdownMenuLabel",
+        "DropdownMenuSeparator",
+        "DropdownMenuTrigger"
+      ],
+      body: `
+export function QuickActionsMenu() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Quick actions</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>Editorial actions</DropdownMenuLabel>
+        <DropdownMenuItem>Archive draft</DropdownMenuItem>
+        <DropdownMenuItem>Duplicate draft</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem destructive>Delete permanently</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+      `
+    }),
     preview: (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -185,15 +246,24 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "Anchored contextual content without taking over the whole screen.",
     filename: "popover.tsx",
-    code: `<Popover>
-  <PopoverTrigger asChild>
-    <Button variant="secondary">Open note</Button>
-  </PopoverTrigger>
-  <PopoverContent align="start">
-    <Badge variant="accent">Context</Badge>
-    <p>Small, anchored detail with calm motion.</p>
-  </PopoverContent>
-</Popover>`,
+    code: createUsageSnippet({
+      imports: ["Badge", "Button", "Popover", "PopoverContent", "PopoverTrigger"],
+      body: `
+export function ContextPopover() {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="secondary">Open note</Button>
+      </PopoverTrigger>
+      <PopoverContent align="start">
+        <Badge variant="accent">Context</Badge>
+        <p>Small, anchored detail with calm motion.</p>
+      </PopoverContent>
+    </Popover>
+  );
+}
+      `
+    }),
     preview: (
       <Popover>
         <PopoverTrigger asChild>
@@ -216,14 +286,29 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "Soft, understated micro-copy for metadata or compact guidance.",
     filename: "tooltip.tsx",
-    code: `<TooltipProvider>
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <Button variant="secondary">Hover metadata</Button>
-    </TooltipTrigger>
-    <TooltipContent>Tooltips ease in softly.</TooltipContent>
-  </Tooltip>
-</TooltipProvider>`,
+    code: createUsageSnippet({
+      imports: [
+        "Button",
+        "Tooltip",
+        "TooltipContent",
+        "TooltipProvider",
+        "TooltipTrigger"
+      ],
+      body: `
+export function MetadataTooltip() {
+  return (
+    <TooltipProvider delayDuration={120}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="secondary">Hover metadata</Button>
+        </TooltipTrigger>
+        <TooltipContent>Tooltips ease in softly.</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+      `
+    }),
     preview: (
       <TooltipProvider delayDuration={120}>
         <Tooltip>
@@ -241,14 +326,24 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "Hover-revealed context for people, notes, or richer metadata.",
     filename: "hover-card.tsx",
-    code: `<HoverCard>
-  <HoverCardTrigger asChild>
-    <Button variant="link">Hover author profile</Button>
-  </HoverCardTrigger>
-  <HoverCardContent align="start">
-    <p>Contributor details and supporting context.</p>
-  </HoverCardContent>
-</HoverCard>`,
+    code: createUsageSnippet({
+      imports: ["Badge", "Button", "HoverCard", "HoverCardContent", "HoverCardTrigger"],
+      body: `
+export function AuthorHoverCard() {
+  return (
+    <HoverCard openDelay={120} closeDelay={90}>
+      <HoverCardTrigger asChild>
+        <Button variant="link">Hover author profile</Button>
+      </HoverCardTrigger>
+      <HoverCardContent align="start">
+        <Badge variant="accent">Contributor</Badge>
+        <p>Contributor details and supporting context.</p>
+      </HoverCardContent>
+    </HoverCard>
+  );
+}
+      `
+    }),
     preview: (
       <HoverCard openDelay={120} closeDelay={90}>
         <HoverCardTrigger asChild>
@@ -271,18 +366,43 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "Low-level searchable command surface for custom palettes, launchers, and quick-switchers.",
     filename: "command.tsx",
-    code: `<Command className="border">
-  <CommandInput placeholder="Search notes..." />
-  <CommandList>
-    <CommandEmpty>No results.</CommandEmpty>
-    <CommandGroup heading="Drafts">
-      <CommandItem value="review">
-        Review current draft
-        <CommandShortcut>R</CommandShortcut>
-      </CommandItem>
-    </CommandGroup>
-  </CommandList>
-</Command>`,
+    code: createUsageSnippet({
+      imports: [
+        "Command",
+        "CommandEmpty",
+        "CommandGroup",
+        "CommandInput",
+        "CommandItem",
+        "CommandList",
+        "CommandSeparator",
+        "CommandShortcut"
+      ],
+      body: `
+export function EditorialCommandSurface() {
+  return (
+    <Command className="border shadow-field">
+      <CommandInput placeholder="Search notes..." />
+      <CommandList>
+        <CommandEmpty>No matching entry.</CommandEmpty>
+        <CommandGroup heading="Drafts">
+          <CommandItem value="review-current-draft">
+            <span>Review current draft</span>
+            <CommandShortcut>R</CommandShortcut>
+          </CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Navigation">
+          <CommandItem value="go-to-theme-builder">
+            <span>Go to theme builder</span>
+            <CommandShortcut>T</CommandShortcut>
+          </CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  );
+}
+      `
+    }),
     preview: <CommandUsagePreview />
   },
   {
@@ -291,12 +411,39 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "A ready-to-use command launcher built on top of the lower-level Command primitives.",
     filename: "command-palette.tsx",
-    code: `<CommandPalette
-  open={open}
-  onOpenChange={setOpen}
-  groups={groups}
-  placeholder="Search actions..."
-/>`,
+    code: createUsageSnippet({
+      react: true,
+      imports: ["Button", "CommandPalette"],
+      body: `
+const groups = [
+  {
+    heading: "Actions",
+    items: [
+      { value: "publish", label: "Publish current draft", shortcut: "P", onSelect: () => undefined },
+      { value: "assign", label: "Assign reviewer", shortcut: "R", onSelect: () => undefined }
+    ]
+  }
+];
+
+export function EditorialCommandPalette() {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button variant="outline" onClick={() => setOpen(true)}>
+        Open command palette
+      </Button>
+      <CommandPalette
+        open={open}
+        onOpenChange={setOpen}
+        groups={groups}
+        placeholder="Search actions, pages, or shortcuts..."
+      />
+    </>
+  );
+}
+      `
+    }),
     preview: <CommandPaletteUsagePreview />
   },
   {
@@ -305,18 +452,44 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "Right-click menus for dense workflows where secondary actions should stay close to the target.",
     filename: "context-menu.tsx",
-    code: `<ContextMenu>
-  <ContextMenuTrigger className="rounded-[24px] border px-4 py-8">
-    Right click this area
-  </ContextMenuTrigger>
-  <ContextMenuContent>
-    <ContextMenuLabel>Review actions</ContextMenuLabel>
-    <ContextMenuItem>
-      Duplicate note
-      <ContextMenuShortcut>Cmd+D</ContextMenuShortcut>
-    </ContextMenuItem>
-  </ContextMenuContent>
-</ContextMenu>`,
+    code: createUsageSnippet({
+      imports: [
+        "ContextMenu",
+        "ContextMenuContent",
+        "ContextMenuItem",
+        "ContextMenuLabel",
+        "ContextMenuSeparator",
+        "ContextMenuShortcut",
+        "ContextMenuTrigger"
+      ],
+      body: `
+export function ReviewContextMenu() {
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger
+        style={{
+          display: "block",
+          padding: "1.25rem",
+          borderRadius: "var(--marginalia-radius-panel)",
+          border: "1px solid rgba(var(--marginalia-color-border), 0.8)"
+        }}
+      >
+        Right click this area
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuLabel>Review actions</ContextMenuLabel>
+        <ContextMenuItem>
+          Duplicate note
+          <ContextMenuShortcut>Cmd+D</ContextMenuShortcut>
+        </ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem destructive>Delete permanently</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  );
+}
+      `
+    }),
     preview: <ContextMenuUsagePreview />
   },
   {
@@ -325,15 +498,37 @@ export const overlayUsageSections: UsageSection[] = [
     category: "Overlays",
     description: "Short-lived feedback with the same motion and tone as the rest of the system.",
     filename: "toast.tsx",
-    code: `<ToastProvider>
-  <Button onClick={() => setOpen(true)}>Show toast</Button>
-  <Toast open={open} onOpenChange={setOpen} variant="success">
-    <ToastTitle>Draft published</ToastTitle>
-    <ToastDescription>The latest version is ready for review.</ToastDescription>
-    <ToastAction altText="Undo">Undo</ToastAction>
-  </Toast>
-  <ToastViewport />
-</ToastProvider>`,
+    code: createUsageSnippet({
+      react: true,
+      imports: [
+        "Button",
+        "Toast",
+        "ToastAction",
+        "ToastClose",
+        "ToastDescription",
+        "ToastProvider",
+        "ToastTitle",
+        "ToastViewport"
+      ],
+      body: `
+export function PublishToast() {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <ToastProvider swipeDirection="right">
+      <Button onClick={() => setOpen(true)}>Show toast</Button>
+      <Toast open={open} onOpenChange={setOpen} variant="success" duration={2600}>
+        <ToastTitle>Draft published</ToastTitle>
+        <ToastDescription>The latest version is ready for review.</ToastDescription>
+        <ToastAction altText="Undo">Undo</ToastAction>
+        <ToastClose />
+      </Toast>
+      <ToastViewport />
+    </ToastProvider>
+  );
+}
+      `
+    }),
     preview: <ToastUsagePreview />
   }
 ];

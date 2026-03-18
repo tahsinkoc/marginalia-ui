@@ -31,6 +31,7 @@ import {
   TabsTrigger
 } from "@marginalia/ui";
 
+import { createUsageSnippet } from "./usage-snippet";
 import type { UsageSection } from "./usage-types";
 
 export const navigationUsageSections: UsageSection[] = [
@@ -40,13 +41,23 @@ export const navigationUsageSections: UsageSection[] = [
     category: "Navigation",
     description: "Segment closely related content without leaving the page.",
     filename: "tabs.tsx",
-    code: `<Tabs defaultValue="principles">
-  <TabsList>
-    <TabsTrigger value="principles">Principles</TabsTrigger>
-    <TabsTrigger value="usage">Usage</TabsTrigger>
-  </TabsList>
-  <TabsContent value="principles">Warm surfaces and calm contrast.</TabsContent>
-</Tabs>`,
+    code: createUsageSnippet({
+      imports: ["Tabs", "TabsContent", "TabsList", "TabsTrigger"],
+      body: `
+export function PrinciplesTabs() {
+  return (
+    <Tabs defaultValue="principles">
+      <TabsList>
+        <TabsTrigger value="principles">Principles</TabsTrigger>
+        <TabsTrigger value="usage">Usage</TabsTrigger>
+      </TabsList>
+      <TabsContent value="principles">Warm surfaces and calm contrast.</TabsContent>
+      <TabsContent value="usage">Use tabs for adjacent settings or closely related content.</TabsContent>
+    </Tabs>
+  );
+}
+      `
+    }),
     preview: (
       <Tabs defaultValue="principles">
         <TabsList>
@@ -66,14 +77,25 @@ export const navigationUsageSections: UsageSection[] = [
     category: "Navigation",
     description: "Reveal layered explanations or settings progressively.",
     filename: "accordion.tsx",
-    code: `<Accordion type="single" collapsible>
-  <AccordionItem value="motion">
-    <AccordionTrigger>How is motion handled?</AccordionTrigger>
-    <AccordionContent>
-      Movements stay short and soft.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>`,
+    code: createUsageSnippet({
+      imports: ["Accordion", "AccordionContent", "AccordionItem", "AccordionTrigger"],
+      body: `
+export function MotionAccordion() {
+  return (
+    <Accordion type="single" collapsible>
+      <AccordionItem value="motion">
+        <AccordionTrigger>How is motion handled?</AccordionTrigger>
+        <AccordionContent>Movements stay short and soft.</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="density">
+        <AccordionTrigger>Can spacing be compact?</AccordionTrigger>
+        <AccordionContent>Yes, density tokens can tighten the entire system.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+      `
+    }),
     preview: (
       <Accordion type="single" collapsible className="grid gap-3">
         <AccordionItem value="motion">
@@ -93,17 +115,37 @@ export const navigationUsageSections: UsageSection[] = [
     category: "Navigation",
     description: "Compact path context for nested views and editorial flows.",
     filename: "breadcrumb.tsx",
-    code: `<Breadcrumb>
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="#">Library</BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <BreadcrumbPage>Review draft</BreadcrumbPage>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>`,
+    code: createUsageSnippet({
+      imports: [
+        "Breadcrumb",
+        "BreadcrumbItem",
+        "BreadcrumbLink",
+        "BreadcrumbList",
+        "BreadcrumbPage",
+        "BreadcrumbSeparator"
+      ],
+      body: `
+export function ReviewBreadcrumb() {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="#">Library</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="#">Editorial</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbPage>Review draft</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
+      `
+    }),
     preview: (
       <Breadcrumb>
         <BreadcrumbList>
@@ -128,17 +170,38 @@ export const navigationUsageSections: UsageSection[] = [
     category: "Navigation",
     description: "Desktop-like top-level action bars for richer productivity and editorial tooling flows.",
     filename: "menubar.tsx",
-    code: `<Menubar>
-  <MenubarMenu>
-    <MenubarTrigger>File</MenubarTrigger>
-    <MenubarContent>
-      <MenubarItem>
-        New note
-        <MenubarShortcut>Cmd+N</MenubarShortcut>
-      </MenubarItem>
-    </MenubarContent>
-  </MenubarMenu>
-</Menubar>`,
+    code: createUsageSnippet({
+      imports: [
+        "Menubar",
+        "MenubarContent",
+        "MenubarItem",
+        "MenubarLabel",
+        "MenubarMenu",
+        "MenubarSeparator",
+        "MenubarShortcut",
+        "MenubarTrigger"
+      ],
+      body: `
+export function EditorialMenubar() {
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarLabel>Document</MenubarLabel>
+          <MenubarItem>
+            New note
+            <MenubarShortcut>Cmd+N</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>Archive current draft</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}
+      `
+    }),
     preview: (
       <Menubar>
         <MenubarMenu>
@@ -174,19 +237,38 @@ export const navigationUsageSections: UsageSection[] = [
     category: "Navigation",
     description: "Page controls for longer archives, tables, and listings.",
     filename: "pagination.tsx",
-    code: `<Pagination>
-  <PaginationContent>
-    <PaginationItem>
-      <PaginationPrevious href="#" />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="#" active>2</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationNext href="#" />
-    </PaginationItem>
-  </PaginationContent>
-</Pagination>`,
+    code: createUsageSnippet({
+      imports: [
+        "Pagination",
+        "PaginationContent",
+        "PaginationItem",
+        "PaginationLink",
+        "PaginationNext",
+        "PaginationPrevious"
+      ],
+      body: `
+export function ArchivePagination() {
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious href="#" />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#">1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#" active>2</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext href="#" />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+}
+      `
+    }),
     preview: (
       <Pagination>
         <PaginationContent>

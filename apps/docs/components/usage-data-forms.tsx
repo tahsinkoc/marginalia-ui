@@ -13,6 +13,7 @@ import {
   Textarea
 } from "@marginalia/ui";
 
+import { createUsageSnippet } from "./usage-snippet";
 import type { UsageSection } from "./usage-types";
 
 const selectOptions = [
@@ -49,8 +50,19 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Field primitives with consistent height, radius, and invalid state behavior.",
     filename: "input.tsx",
-    code: `<Input placeholder="editorial@marginalia.dev" />
-<Input invalid placeholder="Missing author email" />`,
+    code: createUsageSnippet({
+      imports: ["Input"],
+      body: `
+export function AuthorFields() {
+  return (
+    <>
+      <Input placeholder="editorial@marginalia.dev" />
+      <Input invalid placeholder="Missing author email" />
+    </>
+  );
+}
+      `
+    }),
     preview: (
       <div className="section-stack">
         <Input placeholder="editorial@marginalia.dev" />
@@ -64,7 +76,16 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Longer freeform input with the same token-driven spacing rhythm as the rest of the kit.",
     filename: "textarea.tsx",
-    code: `<Textarea placeholder="Describe the tone, layout, and supporting notes..." />`,
+    code: createUsageSnippet({
+      imports: ["Textarea"],
+      body: `
+export function EditorialNotesField() {
+  return (
+    <Textarea placeholder="Describe the tone, layout, and supporting notes..." />
+  );
+}
+      `
+    }),
     preview: <Textarea placeholder="Describe the tone, layout, and supporting notes..." />
   },
   {
@@ -73,11 +94,20 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Checkbox with label and description support out of the box.",
     filename: "checkbox.tsx",
-    code: `<Checkbox
-  defaultChecked
-  label="Include soft contrast"
-  description="Keeps the palette warm without losing clarity."
-/>`,
+    code: createUsageSnippet({
+      imports: ["Checkbox"],
+      body: `
+export function PreferencesCheckbox() {
+  return (
+    <Checkbox
+      defaultChecked
+      label="Include soft contrast"
+      description="Keeps the palette warm without losing clarity."
+    />
+  );
+}
+      `
+    }),
     preview: (
       <Checkbox
         defaultChecked
@@ -92,14 +122,25 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Mutually exclusive options with descriptions and gentle spacing.",
     filename: "radio-group.tsx",
-    code: `<RadioGroup
-  defaultValue="warm"
-  label="Palette character"
-  options={[
-    { value: "warm", label: "Warm editorial" },
-    { value: "neutral", label: "Neutral paper" }
-  ]}
-/>`,
+    code: createUsageSnippet({
+      imports: ["RadioGroup"],
+      body: `
+const paletteOptions = [
+  { value: "warm", label: "Warm editorial" },
+  { value: "neutral", label: "Neutral paper" }
+];
+
+export function PaletteCharacterField() {
+  return (
+    <RadioGroup
+      defaultValue="warm"
+      label="Palette character"
+      options={paletteOptions}
+    />
+  );
+}
+      `
+    }),
     preview: (
       <RadioGroup
         defaultValue="warm"
@@ -117,11 +158,20 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Two-state controls for preference toggles and denser settings screens.",
     filename: "switch.tsx",
-    code: `<Switch
-  defaultChecked
-  label="Enable compact review mode"
-  description="Useful when showing multiple data cards side by side."
-/>`,
+    code: createUsageSnippet({
+      imports: ["Switch"],
+      body: `
+export function DensityToggle() {
+  return (
+    <Switch
+      defaultChecked
+      label="Enable compact review mode"
+      description="Useful when showing multiple data cards side by side."
+    />
+  );
+}
+      `
+    }),
     preview: (
       <Switch
         defaultChecked
@@ -136,12 +186,27 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Keyboard-friendly option picking with labels, descriptions, and warm Radix surfaces.",
     filename: "select.tsx",
-    code: `<Select
-  label="Document style"
-  description="Built with Radix for dependable interaction."
-  defaultValue="essay"
-  options={selectOptions}
-/>`,
+    code: createUsageSnippet({
+      imports: ["Select"],
+      body: `
+const documentStyleOptions = [
+  { value: "essay", label: "Essay", description: "Long-form editorial writing." },
+  { value: "brief", label: "Brief", description: "Shorter, denser communication." },
+  { value: "report", label: "Report", description: "Structured updates for teams." }
+];
+
+export function DocumentStyleField() {
+  return (
+    <Select
+      label="Document style"
+      description="Built with Radix for dependable interaction."
+      defaultValue="essay"
+      options={documentStyleOptions}
+    />
+  );
+}
+      `
+    }),
     preview: (
       <Select
         label="Document style"
@@ -157,12 +222,40 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Searchable selection for larger option sets than a simple select.",
     filename: "combobox.tsx",
-    code: `<Combobox
-  label="Content mode"
-  options={comboboxOptions}
-  value={value}
-  onValueChange={setValue}
-/>`,
+    code: createUsageSnippet({
+      react: true,
+      imports: ["Combobox"],
+      body: `
+const contentModeOptions = [
+  {
+    value: "editorial",
+    label: "Editorial review",
+    description: "Warm hierarchy for article-like interfaces.",
+    keywords: ["warm", "review", "editorial"]
+  },
+  {
+    value: "archive",
+    label: "Research archive",
+    description: "Dense but calm data and reading surfaces.",
+    keywords: ["archive", "research", "dense"]
+  }
+];
+
+export function ContentModeField() {
+  const [value, setValue] = React.useState("editorial");
+
+  return (
+    <Combobox
+      label="Content mode"
+      description="Search and pick a tone or structural mode."
+      options={contentModeOptions}
+      value={value}
+      onValueChange={setValue}
+    />
+  );
+}
+      `
+    }),
     preview: <ComboboxUsagePreview />
   },
   {
@@ -171,11 +264,25 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Single-date picking with a calmer editorial calendar surface.",
     filename: "date-picker.tsx",
-    code: `<DatePicker
-  label="Review deadline"
-  selected={date}
-  onSelect={setDate}
-/>`,
+    code: createUsageSnippet({
+      react: true,
+      imports: ["DatePicker"],
+      body: `
+export function ReviewDeadlineField() {
+  const [date, setDate] = React.useState<Date | undefined>(new Date(2026, 2, 22));
+
+  return (
+    <DatePicker
+      label="Review deadline"
+      description="Choose a single date with the calmer editorial calendar."
+      selected={date}
+      onSelect={setDate}
+      calendarProps={{ defaultMonth: new Date(2026, 2, 1) }}
+    />
+  );
+}
+      `
+    }),
     preview: <DatePickerUsagePreview />
   },
   {
@@ -184,9 +291,24 @@ export const formUsageSections: UsageSection[] = [
     category: "Forms",
     description: "Standalone date grid when you want the calendar surface without wrapping it in a field.",
     filename: "calendar.tsx",
-    code: `const [selected, setSelected] = React.useState<Date | undefined>(new Date());
+    code: createUsageSnippet({
+      react: true,
+      imports: ["Calendar"],
+      body: `
+export function EditorialCalendar() {
+  const [selected, setSelected] = React.useState<Date | undefined>(new Date(2026, 2, 18));
 
-<Calendar mode="single" selected={selected} onSelect={setSelected} />`,
+  return (
+    <Calendar
+      mode="single"
+      selected={selected}
+      onSelect={setSelected}
+      defaultMonth={new Date(2026, 2, 1)}
+    />
+  );
+}
+      `
+    }),
     preview: <CalendarUsagePreview />
   }
 ];

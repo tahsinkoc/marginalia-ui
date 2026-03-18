@@ -14,7 +14,7 @@ import {
   SheetTrigger,
   Switch,
   buttonVariants
-} from "@marginalia/ui";
+} from "marginalia-ui";
 import { useDocsTheme } from "./docs-theme-provider";
 
 const navigation = [

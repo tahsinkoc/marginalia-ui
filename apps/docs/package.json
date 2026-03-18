@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@marginalia/ui": "0.1.0",
+    "marginalia-ui": "^0.1.2",
     "next": "^16.1.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"

@@ -59,7 +59,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
-} from "@marginalia/ui";
+} from "marginalia-ui";
 
 import { createUsageSnippet } from "./usage-snippet";
 import type { UsageSection } from "./usage-types";

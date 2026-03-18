@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Newsreader } from "next/font/google";
 
-import "@marginalia/ui/styles.css";
+import "marginalia-ui/styles.css";
 import "./globals.css";
 import { DocsNav } from "../components/docs-nav";
 import { DocsThemeProvider } from "../components/docs-theme-provider";

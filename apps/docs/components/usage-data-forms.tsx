@@ -11,7 +11,7 @@ import {
   Select,
   Switch,
   Textarea
-} from "@marginalia/ui";
+} from "marginalia-ui";
 
 import { createUsageSnippet } from "./usage-snippet";
 import type { UsageSection } from "./usage-types";

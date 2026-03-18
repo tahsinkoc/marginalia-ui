@@ -17,7 +17,7 @@ export default function ThemePage() {
           <div className="section-stack">
             <div className="eyebrow">How to ship it</div>
             <p className="lead" style={{ fontSize: "1rem" }}>
-              Import <span className="mono-note">@marginalia/ui/styles.css</span> once, then paste your exported token block
+              Import <span className="mono-note">marginalia-ui/styles.css</span> once, then paste your exported token block
               into <span className="mono-note">app/globals.css</span> or the library&apos;s own
               <span className="mono-note"> packages/ui/src/styles/theme.css</span>.
             </p>

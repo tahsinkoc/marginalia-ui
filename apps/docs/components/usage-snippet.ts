@@ -18,11 +18,11 @@ export function createUsageSnippet({
   }
 
   if (imports.length > 0) {
-    blocks.push(formatImport(imports, "@marginalia/ui"));
+    blocks.push(formatImport(imports, "marginalia-ui"));
   }
 
   if (typeImports.length > 0) {
-    blocks.push(formatImport(typeImports, "@marginalia/ui", true));
+    blocks.push(formatImport(typeImports, "marginalia-ui", true));
   }
 
   blocks.push(body.trim());

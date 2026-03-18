@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, CodeViewer, buttonVariants } from "@marginalia/ui";
+import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, CodeViewer, buttonVariants } from "marginalia-ui";
 
 const installSnippet = `npm install marginalia-ui`;
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, buttonVariants } from "@marginalia/ui";
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, buttonVariants } from "marginalia-ui";
 
 import { CodexSkillCallout } from "../components/codex-skill-callout";
 import { SectionIntro, ShowcasePanel } from "../components/docs-section";

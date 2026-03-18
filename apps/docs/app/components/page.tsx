@@ -124,8 +124,8 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
-} from "@marginalia/ui";
-import type { DataTableColumn } from "@marginalia/ui";
+} from "marginalia-ui";
+import type { DataTableColumn } from "marginalia-ui";
 
 import { SectionIntro, ShowcasePanel } from "../../components/docs-section";
 

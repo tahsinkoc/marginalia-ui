@@ -29,7 +29,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger
-} from "@marginalia/ui";
+} from "marginalia-ui";
 
 import { createUsageSnippet } from "./usage-snippet";
 import type { UsageSection } from "./usage-types";

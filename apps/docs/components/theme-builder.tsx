@@ -17,7 +17,7 @@ import {
   RichTextQuote,
   RichTextSurface,
   Textarea
-} from "@marginalia/ui";
+} from "marginalia-ui";
 
 type ThemeMode = "light" | "dark";
 
@@ -595,7 +595,7 @@ export function ThemeBuilder() {
               <div className="token-card">
                 <div className="token-name">Paste in a Next app</div>
                 <div className="theme-field-note">
-                  Keep `import "@marginalia/ui/styles.css"` in `app/layout.tsx`, then paste both blocks into
+                  Keep `import "marginalia-ui/styles.css"` in `app/layout.tsx`, then paste both blocks into
                   `app/globals.css`.
                 </div>
               </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, CodeViewer, Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger, buttonVariants } from "@marginalia/ui";
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, CodeViewer, Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger, buttonVariants } from "marginalia-ui";
 
 import { contentUsageSections } from "./usage-data-content";
 import { foundationUsageSections } from "./usage-data-foundations";

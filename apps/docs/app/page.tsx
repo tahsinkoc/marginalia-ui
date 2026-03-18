@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, buttonVariants } from "@marginalia/ui";
 
+import { CodexSkillCallout } from "../components/codex-skill-callout";
 import { SectionIntro, ShowcasePanel } from "../components/docs-section";
 
 const principles = [
@@ -73,6 +74,15 @@ export default function HomePage() {
             </div>
           </CardContent>
         </Card>
+      </section>
+
+      <section className="section-stack">
+        <SectionIntro
+          eyebrow="Codex"
+          title="Ship the kit with a skill that already knows it."
+          description="Marginalia includes a dedicated Codex skill so page-building requests can stay inside the system instead of drifting into another UI language."
+        />
+        <CodexSkillCallout ctaHref="/usage" ctaLabel="See live usage patterns" />
       </section>
 
       <section className="section-stack">

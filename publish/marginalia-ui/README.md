@@ -87,4 +87,6 @@ cd publish/marginalia-ui
 npm publish
 ```
 
-Before publishing a new release, update `version` in `package.json`. If you plan to publish publicly with a specific open-source license, replace the current `UNLICENSED` value with your preferred license.
+## License
+
+MIT

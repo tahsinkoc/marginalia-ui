@@ -31,7 +31,7 @@
     "design-system",
     "typescript"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },

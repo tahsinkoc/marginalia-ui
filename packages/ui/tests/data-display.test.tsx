@@ -27,6 +27,25 @@ import {
 } from "../src";
 import type { DataTableColumn } from "../src";
 
+function hasNormalizedText(text: string) {
+  const target = text.toLowerCase();
+  const normalize = (value: string | null | undefined) =>
+    value?.replace(/\s+/g, " ").trim().toLowerCase() ?? "";
+
+  return (_content: string, element: Element | null) => {
+    if (!element) {
+      return false;
+    }
+
+    const hasText = normalize(element.textContent) === target;
+    const childHasText = Array.from(element.children).some(
+      (child) => normalize(child.textContent) === target
+    );
+
+    return hasText && !childHasText;
+  };
+}
+
 describe("DatePicker, Table, Pagination, and EmptyState", () => {
   it("selects a date from the date picker", async () => {
     const user = userEvent.setup();
@@ -61,7 +80,24 @@ describe("DatePicker, Table, Pagination, and EmptyState", () => {
     await user.click(screen.getByRole("button", { name: /review deadline/i }));
     await user.click(screen.getByRole("button", { name: /next month/i }));
 
-    expect(screen.getAllByText(/april 2026/i)).toHaveLength(1);
+    expect(screen.getAllByText(hasNormalizedText("April 2026"))).toHaveLength(1);
+  });
+
+  it("renders year navigation buttons and jumps by year", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <DatePicker
+        label="Review deadline"
+        placeholder="Choose a date"
+        calendarProps={{ defaultMonth: new Date(2026, 2, 1) }}
+      />
+    );
+
+    await user.click(screen.getByRole("button", { name: /review deadline/i }));
+    await user.click(screen.getByRole("button", { name: /go to next year/i }));
+
+    expect(screen.getByText(hasNormalizedText("March 2027"))).toBeInTheDocument();
   });
 
   it("renders table content and caption", () => {
